@@ -1,5 +1,11 @@
 import click
 
-@click.command()
+@click.group()
 def cli():
-    print("nabp")
+    click.echo("nabp")
+
+
+@cli.command()
+@click.option('--string', default='World')
+def core():
+    click.echo('command core')
