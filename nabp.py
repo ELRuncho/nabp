@@ -1,3 +1,4 @@
+from email.policy import default
 import click
 
 @click.group()
@@ -5,7 +6,13 @@ def cli():
     click.echo("nabp")
 
 
-@cli.command()
-@click.option('--string', default='World')
+@cli.group('core')
 def core():
-    click.echo('command core')
+    """comandos seguridad core"""
+    
+
+@core.command('desplegar')
+@click.option('--tag', default=None, help="agregar tag a recursos desplegados")
+def coresec(tag):
+    "desplegar medidas core"
+    click.echo("testing de comando desplegar")
