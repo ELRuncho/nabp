@@ -71,7 +71,7 @@ def presupuesto(config, id, nombre,monto, email):
                                 BudgetName= nombre,
                                 Notification= {
                                         'NotificationType': 'ACTUAL',
-                                        'ComparisonOperator': 'GRATHER_THAN',
+                                        'ComparisonOperator': 'GREATER_THAN',
                                         'Threshold': 60,
                                         'ThresholdType': 'PERCENTAGE',
                                         'NotificationState': 'ALARM' 
