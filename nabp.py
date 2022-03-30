@@ -64,6 +64,8 @@ def presupuesto(config, id, nombre,monto, email):
                             }
                         )
 
+    click.echo("budget creados")
+
     budget.create_notification(
                                 AccountId=id,
                                 BudgetName= nombre,
@@ -76,7 +78,7 @@ def presupuesto(config, id, nombre,monto, email):
                                     }
                               )
 
-    click.echo("budget y alerta creadas")
+    click.echo("notificacion creadas")
 
     for item in email:
         budget.create_subscriber(
