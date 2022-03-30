@@ -66,7 +66,7 @@ def presupuesto(config, id, nombre,monto, email):
 
     budget.create_notification(
                                 AccountId=id,
-                                BudgetName='miPrimerPresupuesto',
+                                BudgetName= nombre,
                                 Notification= {
                                         'NotificationType': 'ACTUAL',
                                         'ComparisonOperator': 'GRATHER_THAN',
