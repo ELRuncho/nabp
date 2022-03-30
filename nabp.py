@@ -55,10 +55,12 @@ def presupuesto(config, id, nombre,monto, email):
                             AccountId=id,
                             Budget={
                                 'BudgetName': nombre,
-                                'Budgetlimit': {
+                                'BudgetLimit': {
                                     'Amount': monto,
                                     'Unit':'USD'
-                                },   
+                                },
+                                'TimeUnit': 'MONTHLY',
+                                'BudgetType': 'COST'
                             }
                         )
 
