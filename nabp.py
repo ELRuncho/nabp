@@ -79,7 +79,7 @@ def presupuesto(config, id, nombre,monto, email):
                                 Subscribers=[
                                                 {
                                                     'SubscriptionType': 'EMAIL',
-                                                    'Address': item
+                                                    'Address': email
                                                 }
                                     ]
                               )
