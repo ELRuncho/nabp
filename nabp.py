@@ -40,40 +40,60 @@ def coresec(config,tag):
 
 @core.command('presupuesto')
 @click.option('--id', default=None, help="id de la cuenta de aws")
-@click.option('--presupuesto', default=None, help='monto de presupuesto a crear')
+@click.option('--nombre', default=None, help='mnombre del presupuesto a crear')
+@click.option('--monto', default=None, help='monto, en USD, del presupuesto a crear')
 @click.option('--email', default=None, help='email para enviar notificaciones relacionadas con el presupuesto')
 @pass_config
-def presupuesto(config, id, presupuesto, correo):
+def presupuesto(config, id, nombre,monto, email):
     "establece presupuesto y alertas"
     sess = config.session
     budget=sess.client("budgets")
 
     click.echo(" creando budget y alerta asociada")
-
+    #monto debe ser string
     budget.create_budget(   
                             AccountId=id,
                             Budget={
-                                'BudgetName': 'miPrimerPresupuesto',
+                                'BudgetName': nombre,
                                 'Budgetlimit': {
-                                    'Amount':presupuesto,
+                                    'Amount': monto,
                                     'Unit':'USD'
                                 },   
                             }
-                            NotificationsWithSubscribers=[
-                                {
-                                    'Notification': {
+                        )
+
+    budget.create_notification(
+                                AccountId=id,
+                                BudgetName='miPrimerPresupuesto',
+                                Notification= {
                                         'NotificationType': 'ACTUAL',
                                         'ComparisonOperator': 'GRATHER_THAN',
-                                        'Treshold': 60, #puedo ponerlo como imput
+                                        'Treshold': 60,
+                                        'TresholdType': 'PERCENTAGE',
+                                        'NotificationState': 'ALARM' 
+                                    }
+                              )
+
+    click.echo("budget y alerta creadas")
+
+    for item in email:
+        budget.create_subscriber(
+                                    AccountId= id,
+                                    BudgetName= nombre,
+                                    Notification= {
+                                        'NotificationType': 'ACTUAL',
+                                        'ComparisonOperator': 'GRATHER_THAN',
+                                        'Treshold': 60,
                                         'TresholdType': 'PERCENTAGE',
                                         'NotificationState': 'ALARM' 
                                     },
-                                    'Subscribers': [
-                                        {
-                                            'SubscriptionType': 'EMAIL',
-                                            'Address': correo #no parece estar tomandolo?
-                                        },
-                                    ]
-                                }
-                            ]
-                        )
+                                    Subscriber={
+                                        'SubscriptionType': 'EMAIL',
+                                        'Address': item
+                                    }
+
+                                )
+
+    click.echo("subscriptores a notificacion agregados")
+
+    
