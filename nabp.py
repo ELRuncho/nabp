@@ -1,3 +1,4 @@
+import email
 from email.policy import default
 import click
 import boto3
@@ -42,7 +43,7 @@ def coresec(config,tag):
 @click.option('--presupuesto', default=None, help='monto de presupuesto a crear')
 @click.option('--email', default=None, help='email para enviar notificaciones relacionadas con el presupuesto')
 @pass_config
-def presupuesto(config, id, presupuesto):
+def presupuesto(config, id, presupuesto, correo):
     "establece presupuesto y alertas"
     sess = config.session
     budget=sess.client("budgets")
@@ -52,6 +53,27 @@ def presupuesto(config, id, presupuesto):
     budget.create_budget(   
                             AccountId=id,
                             Budget={
-                                
+                                'BudgetName': 'miPrimerPresupuesto',
+                                'Budgetlimit': {
+                                    'Amount':presupuesto,
+                                    'Unit':'USD'
+                                },   
                             }
+                            NotificationsWithSubscribers=[
+                                {
+                                    'Notification': {
+                                        'NotificationType': 'ACTUAL',
+                                        'ComparisonOperator': 'GRATHER_THAN',
+                                        'Treshold': 60, #puedo ponerlo como imput
+                                        'TresholdType': 'PERCENTAGE',
+                                        'NotificationState': 'ALARM' 
+                                    },
+                                    'Subscribers': [
+                                        {
+                                            'SubscriptionType': 'EMAIL',
+                                            'Address': correo #no parece estar tomandolo?
+                                        },
+                                    ]
+                                }
+                            ]
                         )
