@@ -64,7 +64,7 @@ def presupuesto(config, id, nombre,monto, email):
                             }
                         )
 
-    click.echo("budget creados")
+    click.echo("budget creado")
 
     budget.create_notification(
                                 AccountId=id,
@@ -75,28 +75,33 @@ def presupuesto(config, id, nombre,monto, email):
                                         'Treshold': 60,
                                         'TresholdType': 'PERCENTAGE',
                                         'NotificationState': 'ALARM' 
-                                    }
+                                    },
+                                Subscribers=[
+                                                {
+                                                    'SubscriptionType': 'EMAIL',
+                                                    'Address': item
+                                                }
+                                    ]
                               )
 
     click.echo("notificacion creadas")
 
-    for item in email:
-        budget.create_subscriber(
-                                    AccountId= id,
-                                    BudgetName= nombre,
-                                    Notification= {
-                                        'NotificationType': 'ACTUAL',
-                                        'ComparisonOperator': 'GRATHER_THAN',
-                                        'Treshold': 60,
-                                        'TresholdType': 'PERCENTAGE',
-                                        'NotificationState': 'ALARM' 
-                                    },
-                                    Subscriber={
-                                        'SubscriptionType': 'EMAIL',
-                                        'Address': item
-                                    }
-
-                                )
+    #for item in email:
+    #    budget.create_subscriber(
+    #                                AccountId= id,
+    #                                BudgetName= nombre,
+    #                                Notification= {
+    #                                    'NotificationType': 'ACTUAL',
+    #                                    'ComparisonOperator': 'GRATHER_THAN',
+    #                                    'Treshold': 60,
+    #                                    'TresholdType': 'PERCENTAGE',
+    #                                    'NotificationState': 'ALARM' 
+    #                                },
+    #                                Subscriber={
+    #                                    'SubscriptionType': 'EMAIL',
+    #                                    'Address': item
+    #                                }
+    #                            )
 
     click.echo("subscriptores a notificacion agregados")
 
