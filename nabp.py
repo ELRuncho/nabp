@@ -27,13 +27,21 @@ def core(config):
     
 
 @core.command('seguridad')
-@click.option('--tag', default=None, help="agregar tag a recursos desplegados")
 @pass_config
 def coresec(config,tag):
     "desplegar medidas de seguridad core"
     sess = config.session
     
     analyzerclient = sess.client('accessanalyzer')
+
+    analyzerclient.create_analyzer(
+                                    analyzerName='string',
+                                    type= 'ACCOUNT'
+                                )
+
+                                
+
+
     
     click.echo('creado bucket')
 
