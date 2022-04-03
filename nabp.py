@@ -121,8 +121,8 @@ def network(config):
 @click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
 @pass_config()
 def crear(config, rango):
-
-    
+    "crea VPC con mejores practicas"
+    sess= config.session
 
     click.echo("subscriptores a notificacion agregados")
 
