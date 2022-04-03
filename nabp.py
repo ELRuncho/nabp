@@ -112,17 +112,20 @@ def presupuesto(config, id, nombre,monto, email):
 
 
 @cli.group('network')
-@pass_config()
+@pass_config
 def network(config):
     """Comandos networking"""
 
 
 @network.command('crear')
 @click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
-@pass_config()
+@pass_config
 def crear(config, rango):
     "crea VPC con mejores practicas"
     sess= config.session
+    sess.client('ec2')
+
+    
 
     click.echo("subscriptores a notificacion agregados")
 
