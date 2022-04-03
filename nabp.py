@@ -26,24 +26,28 @@ def core(config):
     """comandos seguridad core"""
     
 
+@cli.group('network')
+@pass_config()
+def network(config):
+    """Comandos networking"""
+
+
 @core.command('seguridad')
+@click.option('--nombre', default='miAnalyzer', help="nombre del analyzer")
 @pass_config
-def coresec(config,tag):
+def coresec(config, nombre):
     "desplegar medidas de seguridad core"
     sess = config.session
     
     analyzerclient = sess.client('accessanalyzer')
 
+    click.echo('creando analyzer')
     analyzerclient.create_analyzer(
-                                    analyzerName='string',
+                                    analyzerName= nombre,
                                     type= 'ACCOUNT'
                                 )
-
-                                
-
-
-    
-    click.echo('creado bucket')
+                
+    click.echo('creado analyzer')
 
 
 @core.command('presupuesto')
@@ -92,7 +96,26 @@ def presupuesto(config, id, nombre,monto, email):
                                     ]
                               )
 
-    click.echo("notificacion creadas")
+    budget.create_notification(
+                                AccountId= id,
+                                BudgetName= nombre,
+                                Notification= {
+                                        'NotificationType': 'ACTUAL',
+                                        'ComparisonOperator': 'EQUAL_TO',
+                                        'Threshold': 90,
+                                        'ThresholdType': 'PERCENTAGE',
+                                        'NotificationState': 'ALARM' 
+                                    },
+                                Subscribers= [
+                                    {
+                                        'SubscriptionType': 'EMAIL',
+                                        'Address': email
+                                    }
+                                ]
+                            )
+
+    click.echo("notificaciones creadas")
+
 
     #for item in email:
     #    budget.create_subscriber(
