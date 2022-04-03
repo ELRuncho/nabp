@@ -24,12 +24,6 @@ def cli(config,profile):
 @pass_config
 def core(config):
     """comandos seguridad core"""
-    
-
-@cli.group('network')
-@pass_config()
-def network(config):
-    """Comandos networking"""
 
 
 @core.command('seguridad')
@@ -117,22 +111,18 @@ def presupuesto(config, id, nombre,monto, email):
     click.echo("notificaciones creadas")
 
 
-    #for item in email:
-    #    budget.create_subscriber(
-    #                                AccountId= id,
-    #                                BudgetName= nombre,
-    #                                Notification= {
-    #                                    'NotificationType': 'ACTUAL',
-    #                                    'ComparisonOperator': 'GRATHER_THAN',
-    #                                    'Treshold': 60,
-    #                                    'TresholdType': 'PERCENTAGE',
-    #                                    'NotificationState': 'ALARM' 
-    #                                },
-    #                                Subscriber={
-    #                                    'SubscriptionType': 'EMAIL',
-    #                                    'Address': item
-    #                                }
-    #                            )
+@cli.group('network')
+@pass_config()
+def network(config):
+    """Comandos networking"""
+
+
+@network.command('crear')
+@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+@pass_config()
+def crear(config, rango):
+
+    
 
     click.echo("subscriptores a notificacion agregados")
 
