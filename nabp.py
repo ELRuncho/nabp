@@ -166,6 +166,8 @@ def crear(config, rango, region):
                                     InternetGatewayId= igw['InternetGateway']['InternetGatewayId']
                                 )
 
+    click.echo('credo gateway '+ igw['InternetGateway']['InternetGatewayId'] + 'y asignado a VPC '+ vpc['Vpc']['VpcId'])
+
     publicroute= _ec2.create_route_table(
                                             VpcId= vpc['Vpc']['VpcId'],
                                             TagSpecifications= []
