@@ -147,6 +147,14 @@ def crear(config, rango, region):
     
     click.echo("Creada VPC " + vpc['Vpc']['VpcId'])
 
+    publicroute= _ec2.create_route_table(
+                                            VpcId= vpc['Vpc']['VpcId'],
+                                        )
+
+    privateroute= _ec2.create_route_table(
+                                            VpcId= vpc['Vpc']['VpcId'],
+                                        )
+
     PublicSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'10.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
@@ -217,7 +225,7 @@ def crear(config, rango, region):
                                         ]
                                     )
 
-    click.echo('creada subnet publica '+ PrivateSubnetA['Subnet']['SubnetId'])
+    click.echo('creada subnet privada '+ PrivateSubnetA['Subnet']['SubnetId'])
 
     PrivateSubnetB = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'50.0/24',
@@ -235,7 +243,7 @@ def crear(config, rango, region):
                                         ]
                                     )
 
-    click.echo('creada subnet publica '+ PrivateSubnetB['Subnet']['SubnetId'])
+    click.echo('creada subnet privada '+ PrivateSubnetB['Subnet']['SubnetId'])
 
     PrivateSubnetC = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'60.0/24',
@@ -253,7 +261,7 @@ def crear(config, rango, region):
                                         ]
                                     )
     
-    click.echo('creada subnet publica '+ PrivateSubnetC['Subnet']['SubnetId'])
+    click.echo('creada subnet privada '+ PrivateSubnetC['Subnet']['SubnetId'])
 
 
     
