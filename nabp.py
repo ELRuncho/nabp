@@ -170,12 +170,32 @@ def crear(config, rango, region):
 
     publicroute= _ec2.create_route_table(
                                             VpcId= vpc['Vpc']['VpcId'],
-                                            TagSpecifications= []
+                                            TagSpecifications= [
+                                                {
+                                                    'ResourceType': 'subnet',
+                                                    'Tags': [
+                                                        {
+                                                            'Key':'Name',
+                                                            'Value':'NABPublicRoute'
+                                                        },
+                                                    ]
+                                                },
+                                            ]
                                         )
 
     privateroute= _ec2.create_route_table(
                                             VpcId= vpc['Vpc']['VpcId'],
-                                            TagSpecifications= []
+                                            TagSpecifications= [
+                                                {
+                                                    'ResourceType': 'subnet',
+                                                    'Tags': [
+                                                        {
+                                                            'Key':'Name',
+                                                            'Value':'NABPrivateRoute'
+                                                        },
+                                                    ]
+                                                },
+                                            ]
                                         )
 
     PublicSubnetA = _ec2.create_subnet(
