@@ -161,6 +161,11 @@ def crear(config, rango, region):
                                         ]
                                     )
 
+    _ec2.attach_internet_gateway(   
+                                    VpcId= vpc['Vpc']['VpcId'],
+                                    InternetGatewayId= igw['InternetGateway']['InternetGatewayId']
+                                )
+
     publicroute= _ec2.create_route_table(
                                             VpcId= vpc['Vpc']['VpcId'],
                                             TagSpecifications= []
