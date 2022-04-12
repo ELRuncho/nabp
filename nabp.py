@@ -172,7 +172,7 @@ def crear(config, rango, region):
                                             VpcId= vpc['Vpc']['VpcId'],
                                             TagSpecifications= [
                                                 {
-                                                    'ResourceType': 'subnet',
+                                                    'ResourceType': 'route-table',
                                                     'Tags': [
                                                         {
                                                             'Key':'Name',
@@ -187,7 +187,7 @@ def crear(config, rango, region):
                                             VpcId= vpc['Vpc']['VpcId'],
                                             TagSpecifications= [
                                                 {
-                                                    'ResourceType': 'subnet',
+                                                    'ResourceType': 'route-table',
                                                     'Tags': [
                                                         {
                                                             'Key':'Name',
@@ -198,9 +198,34 @@ def crear(config, rango, region):
                                             ]
                                         )
 
+
+    public_route= _ec2.create_route(
+                                        DestinationCidrBlock='0.0.0.0/0',
+                                        GatewayId= igw['InternetGateway']['InternetGatewayId'],
+                                        RouteTableId= publicroute['RouteTable']['RouteTableId']
+                                    )
+
+    eip= _ec2.allocate_address(
+                                Domain='vpc',
+                                TagSpecifications= [
+                                                {
+                                                    'ResourceType': 'elastic-ip',
+                                                    'Tags': [
+                                                        {
+                                                            'Key':'Name',
+                                                            'Value':'NABPEIP'
+                                                        },
+                                                    ]
+                                                },
+                                            ]
+                            )
+
+    click.echo('Creadas tablas de enrutamiento')
+
     PublicSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'10.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        AvailabilityZone= region+'a',
                                         TagSpecifications= [
                                             {
                                                 'ResourceType': 'subnet',
@@ -219,6 +244,7 @@ def crear(config, rango, region):
     PublicSubnetB = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'20.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        AvailabilityZone= region+'b',
                                         TagSpecifications= [
                                             {
                                                 'ResourceType': 'subnet',
@@ -237,6 +263,7 @@ def crear(config, rango, region):
     PublicSubnetC = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'30.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        AvailabilityZone= region+'c',
                                         TagSpecifications= [
                                             {
                                                 'ResourceType': 'subnet',
@@ -255,6 +282,7 @@ def crear(config, rango, region):
     PrivateSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'40.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        AvailabilityZone= region+'a',
                                         TagSpecifications= [
                                             {
                                                 'ResourceType': 'subnet',
@@ -273,6 +301,7 @@ def crear(config, rango, region):
     PrivateSubnetB = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'50.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        AvailabilityZone= region+'b',
                                         TagSpecifications= [
                                             {
                                                 'ResourceType': 'subnet',
@@ -291,6 +320,7 @@ def crear(config, rango, region):
     PrivateSubnetC = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'60.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        AvailabilityZone= region+'c',
                                         TagSpecifications= [
                                             {
                                                 'ResourceType': 'subnet',
@@ -306,7 +336,24 @@ def crear(config, rango, region):
     
     click.echo('creada subnet privada '+ PrivateSubnetC['Subnet']['SubnetId'])
 
+    natgw= _ec2.create_nat_gateway(
+                                    AllocationId=eip['AllocationId'],
+                                    SubnetId=PublicSubnetA['Subnet']['SubnetId'],
+                                    TagSpecifications= [
+                                                {
+                                                    'ResourceType': 'natgateway',
+                                                    'Tags': [
+                                                        {
+                                                            'Key':'Name',
+                                                            'Value':'NABNat'
+                                                        },
+                                                    ]
+                                                },
+                                            ]
+                                )
 
-    
-
-    
+    private_route= _ec2.create_route(
+                                        DestinationCidrBlock='0.0.0.0/0',
+                                        GatewayId= igw['InternetGateway']['InternetGatewayId'],
+                                        RouteTableId= privateroute['RouteTable']['RouteTableId']
+                                    )
