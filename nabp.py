@@ -147,12 +147,28 @@ def crear(config, rango, region):
     
     click.echo("Creada VPC " + vpc['Vpc']['VpcId'])
 
+    igw= _ec2.create_internet_gateway(
+                                        TagSpecifications= [
+                                            {
+                                                'ResourceType': 'internet-gateway',
+                                                'Tags': [
+                                                    {
+                                                        'Key':'Name',
+                                                        'Value':'NABPIGW'
+                                                    },
+                                                ]
+                                            },
+                                        ]
+                                    )
+
     publicroute= _ec2.create_route_table(
                                             VpcId= vpc['Vpc']['VpcId'],
+                                            TagSpecifications= []
                                         )
 
     privateroute= _ec2.create_route_table(
                                             VpcId= vpc['Vpc']['VpcId'],
+                                            TagSpecifications= []
                                         )
 
     PublicSubnetA = _ec2.create_subnet(
