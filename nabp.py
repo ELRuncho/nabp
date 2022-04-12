@@ -1,5 +1,3 @@
-import email
-from email.policy import default
 import click
 import boto3
 
