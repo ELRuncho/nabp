@@ -109,6 +109,7 @@ def presupuesto(config, id, nombre,monto, email):
                             )
 
     click.echo("notificaciones creadas")
+    click.echo("subscriptores a notificacion agregados")
 
 
 @cli.group('network')
@@ -119,14 +120,78 @@ def network(config):
 
 @network.command('crear')
 @click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+@click.option('--region', default='use-east-1', help='Region sobre la que se desplegara la VPC')
 @pass_config
-def crear(config, rango):
-    "crea VPC con mejores practicas"
+def crear(config, rango, region):
+    "crea VPC con CIDR /16 y subnets con rango /24"
     sess= config.session
-    sess.client('ec2')
+    _ec2 = sess.client('ec2')
+
+    vpc = _ec2.create_vpc(
+        CidrBlock=rango,
+        TagSpecifications = [
+            {
+                'ResourceType': 'vpc',
+                'Tags': [
+                        {
+                            'Key':'Name',
+                            'Value':'NABPVPC'
+                        },
+                        {
+                            'Key':'Project',
+                            'Value':'NetworkBase'
+                        },
+                    ]
+            },
+        ]
+    )
+
+    click.echo(vpc.get('Vpc'))
+    click.echo("Creada VPC" + vpc['Vpc']['VpcId'])
+
+    PublicSubnetA = _ec2.create_subnet(
+                                        CidrBlock= rango[0:4]+'10.0/24',
+                                        VpcId= vpc['Vpc']['VpcId'],
+                                    )
+
+    click.echo('creada subnet publica'+ PublicSubnetA['Subnet']['SubnetId'])
+    
+    PublicSubnetB = _ec2.create_subnet(
+                                        CidrBlock= rango[0:4]+'20.0/24',
+                                        VpcId= vpc['Vpc']['VpcId'],
+                                    )
+
+    click.echo('creada subnet publica'+ PublicSubnetB['Subnet']['SubnetId'])
+
+    PublicSubnetC = _ec2.create_subnet(
+                                        CidrBlock= rango[0:4]+'30.0/24',
+                                        VpcId= vpc['Vpc']['VpcId'],
+                                    )
+
+    click.echo('creada subnet publica'+ PublicSubnetC['Subnet']['SubnetId'])
+
+    PrivateSubnetA = _ec2.create_subnet(
+                                        CidrBlock= rango[0:4]+'40.0/24',
+                                        VpcId= vpc['Vpc']['VpcId'],
+                                    )
+
+    click.echo('creada subnet publica'+ PrivateSubnetA['Subnet']['SubnetId'])
+
+    PrivateSubnetB = _ec2.create_subnet(
+                                        CidrBlock= rango[0:4]+'50.0/24',
+                                        VpcId= vpc['Vpc']['VpcId'],
+                                    )
+
+    click.echo('creada subnet publica'+ PrivateSubnetB['Subnet']['SubnetId'])
+
+    PrivateSubnetC = _ec2.create_subnet(
+                                        CidrBlock= rango[0:4]+'60.0/24',
+                                        VpcId= vpc['Vpc']['VpcId'],
+                                    )
+    
+    click.echo('creada subnet publica'+ PrivateSubnetC['Subnet']['SubnetId'])
+
 
     
-
-    click.echo("subscriptores a notificacion agregados")
 
     
