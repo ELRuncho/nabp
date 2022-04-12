@@ -147,49 +147,115 @@ def crear(config, rango, region):
     )
 
     
-    click.echo("Creada VPC" + vpc['Vpc']['VpcId'])
+    click.echo("Creada VPC " + vpc['Vpc']['VpcId'])
 
     PublicSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'10.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        TagSpecifications= [
+                                            {
+                                                'ResourceType': 'subnet',
+                                                'Tags': [
+                                                    {
+                                                        'Key':'Name',
+                                                        'Value':'NABPublicSubA'
+                                                    },
+                                                ]
+                                            },
+                                        ]
                                     )
 
-    click.echo('creada subnet publica'+ PublicSubnetA['Subnet']['SubnetId'])
+    click.echo('creada subnet publica '+ PublicSubnetA['Subnet']['SubnetId'])
     
     PublicSubnetB = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'20.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        TagSpecifications= [
+                                            {
+                                                'ResourceType': 'subnet',
+                                                'Tags': [
+                                                    {
+                                                        'Key':'Name',
+                                                        'Value':'NABPublicSubB'
+                                                    },
+                                                ]
+                                            },
+                                        ]
                                     )
 
-    click.echo('creada subnet publica'+ PublicSubnetB['Subnet']['SubnetId'])
+    click.echo('creada subnet publica '+ PublicSubnetB['Subnet']['SubnetId'])
 
     PublicSubnetC = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'30.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        TagSpecifications= [
+                                            {
+                                                'ResourceType': 'subnet',
+                                                'Tags': [
+                                                    {
+                                                        'Key':'Name',
+                                                        'Value':'NABPublicSubC'
+                                                    },
+                                                ]
+                                            },
+                                        ]
                                     )
 
-    click.echo('creada subnet publica'+ PublicSubnetC['Subnet']['SubnetId'])
+    click.echo('creada subnet publica '+ PublicSubnetC['Subnet']['SubnetId'])
 
     PrivateSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'40.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        TagSpecifications= [
+                                            {
+                                                'ResourceType': 'subnet',
+                                                'Tags': [
+                                                    {
+                                                        'Key':'Name',
+                                                        'Value':'NABPrivSubA'
+                                                    },
+                                                ]
+                                            },
+                                        ]
                                     )
 
-    click.echo('creada subnet publica'+ PrivateSubnetA['Subnet']['SubnetId'])
+    click.echo('creada subnet publica '+ PrivateSubnetA['Subnet']['SubnetId'])
 
     PrivateSubnetB = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'50.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        TagSpecifications= [
+                                            {
+                                                'ResourceType': 'subnet',
+                                                'Tags': [
+                                                    {
+                                                        'Key':'Name',
+                                                        'Value':'NABPrivSubB'
+                                                    },
+                                                ]
+                                            },
+                                        ]
                                     )
 
-    click.echo('creada subnet publica'+ PrivateSubnetB['Subnet']['SubnetId'])
+    click.echo('creada subnet publica '+ PrivateSubnetB['Subnet']['SubnetId'])
 
     PrivateSubnetC = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'60.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
+                                        TagSpecifications= [
+                                            {
+                                                'ResourceType': 'subnet',
+                                                'Tags': [
+                                                    {
+                                                        'Key':'Name',
+                                                        'Value':'NABPrivSubC'
+                                                    },
+                                                ]
+                                            },
+                                        ]
                                     )
     
-    click.echo('creada subnet publica'+ PrivateSubnetC['Subnet']['SubnetId'])
+    click.echo('creada subnet publica '+ PrivateSubnetC['Subnet']['SubnetId'])
 
 
     
