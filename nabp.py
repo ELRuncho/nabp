@@ -347,14 +347,57 @@ def crear(config, rango, region):
                                             ]
                                 )
 
+    natwaiter = _ec2.get_waiter('nat_gateway_available')
+    click.echo('creando nat gateway')
+    natwaiter.wait(
+        NatGatewayIds= [natgw['NatGateway']['NatGatewayId'],],
+        WaiterConfig= {
+            'Delay': 30,
+            'MaxAttempts': 30
+        }
+    )
+
+    click.echo('nat creado')
     private_route= _ec2.create_route(
                                         DestinationCidrBlock='0.0.0.0/0',
                                         GatewayId= natgw['NatGateway']['NatGatewayId'],
                                         RouteTableId= privateroute['RouteTable']['RouteTableId']
                                     )
 
+
     public_route= _ec2.create_route(
                                         DestinationCidrBlock='0.0.0.0/0',
                                         GatewayId= igw['InternetGateway']['InternetGatewayId'],
                                         RouteTableId= publicroute['RouteTable']['RouteTableId']
                                     )
+
+    _ec2.associate_route_table(
+        RouteTableId= publicroute['RouteTable']['RouteTableId'],
+        SubnetId= PublicSubnetA['Subnet']['SubnetId'],
+    )
+
+    _ec2.associate_route_table(
+        RouteTableId= publicroute['RouteTable']['RouteTableId'],
+        SubnetId= PublicSubnetB['Subnet']['SubnetId'],
+    )
+
+    _ec2.associate_route_table(
+        RouteTableId= publicroute['RouteTable']['RouteTableId'],
+        SubnetId= PublicSubnetC['Subnet']['SubnetId'],
+    )
+    
+    _ec2.associate_route_table(
+        RouteTableId= privateroute['RouteTable']['RouteTableId'],
+        SubnetId= PrivateSubnetA['Subnet']['SubnetId'],
+    )
+
+    _ec2.associate_route_table(
+        RouteTableId= privateroute['RouteTable']['RouteTableId'],
+        SubnetId= PrivateSubnetB['Subnet']['SubnetId'],
+    )
+
+    _ec2.associate_route_table(
+        RouteTableId= privateroute['RouteTable']['RouteTableId'],
+        SubnetId= PrivateSubnetC['Subnet']['SubnetId'],
+    )
+    
