@@ -198,12 +198,7 @@ def crear(config, rango, region):
                                             ]
                                         )
 
-
-    public_route= _ec2.create_route(
-                                        DestinationCidrBlock='0.0.0.0/0',
-                                        GatewayId= igw['InternetGateway']['InternetGatewayId'],
-                                        RouteTableId= publicroute['RouteTable']['RouteTableId']
-                                    )
+    click.echo('Creadas tablas de enrutamiento')
 
     eip= _ec2.allocate_address(
                                 Domain='vpc',
@@ -220,7 +215,7 @@ def crear(config, rango, region):
                                             ]
                             )
 
-    click.echo('Creadas tablas de enrutamiento')
+    click.echo('Creadas EIP')
 
     PublicSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'10.0/24',
@@ -354,6 +349,12 @@ def crear(config, rango, region):
 
     private_route= _ec2.create_route(
                                         DestinationCidrBlock='0.0.0.0/0',
-                                        GatewayId= igw['InternetGateway']['InternetGatewayId'],
+                                        GatewayId= natgw['NatGateway']['NatGatewayId'],
                                         RouteTableId= privateroute['RouteTable']['RouteTableId']
+                                    )
+
+    public_route= _ec2.create_route(
+                                        DestinationCidrBlock='0.0.0.0/0',
+                                        GatewayId= igw['InternetGateway']['InternetGatewayId'],
+                                        RouteTableId= publicroute['RouteTable']['RouteTableId']
                                     )
