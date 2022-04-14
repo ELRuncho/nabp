@@ -167,9 +167,72 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
                                 UserName=fin1['User']['UserName']
                             )
 
-
-
+    characters = string.ascii_letters + string.digits + string.punctuation
+    adminpwd= ''.join(random.choice(characters) for i in range(8))
+    devpwd= ''.join(random.choice(characters) for i in range(8))
+    audpwd= ''.join(random.choice(characters) for i in range(8))
+    finpwd= ''.join(random.choice(characters) for i in range(8))
     
+    try:
+        admin1login=iamclient.create_login_profile(
+            UserName=admin1['User']['UserName'],
+            Password=adminpwd,
+            PasswordResetRequired= True
+        )
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('el perfil de login de admin1 ya existe')
+        else:
+            click.echo('error inesperado...saliendo', error)
+            return 'perfil de login no se pudo crear', error
+
+    click.echo('El usuario {0} se creo con password temporal: {1}'.format(admin1['User']['UserName'],adminpwd))
+
+    try:
+        dev1login=iamclient.create_login_profile(
+            UserName=dev1['User']['UserName'],
+            Password=devpwd,
+            PasswordResetRequired= True
+        )
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('el perfil de login de dev1 ya existe')
+        else:
+            click.echo('error inesperado...saliendo', error)
+            return 'perfil de login no se pudo crear', error
+
+    click.echo('El usuario {0} se creo con password temporal: {1}'.format(dev1['User']['UserName'],devpwd))
+
+    try:
+        aud1login=iamclient.create_login_profile(
+            UserName=aud1['User']['UserName'],
+            Password=audpwd,
+            PasswordResetRequired= True
+        )
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('el perfil de login de aud1 ya existe')
+        else:
+            click.echo('error inesperado...saliendo', error)
+            return 'perfil de login no se pudo crear', error
+
+    click.echo('El usuario {0} se creo con password temporal: {1}'.format(aud1['User']['UserName'],audpwd))
+
+    try:
+        fin1login=iamclient.create_login_profile(
+            UserName=fin1['User']['UserName'],
+            Password=finpwd,
+            PasswordResetRequired= True
+        )
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('el perfil de login de fin1 ya existe')
+        else:
+            click.echo('error inesperado...saliendo', error)
+            return 'perfil de login no se pudo crear', error
+
+    click.echo('El usuario {0} se creo con password temporal: {1}'.format(fin1['User']['UserName'],finpwd))
+
 
 
 @core.command('presupuesto')
