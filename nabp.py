@@ -50,7 +50,7 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
     click.echo('creado analyzer')
 
     try:
-        admingroup= iamclient.create_group(GroupName='Administradores')
+        admingroup= iamclient.create_group(GroupName= NombreAdminG)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Administradores ya existe....usare el grupo existente')
@@ -59,7 +59,7 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
             return 'No se pudo crear el grupo', error
 
     try:
-        devgroup= iamclient.create_group(GroupName='Developers')    
+        devgroup= iamclient.create_group(GroupName= NombreDevG)    
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Developers ya existe....usare el grupo existente')
@@ -68,7 +68,7 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
             return 'No se pudo crear el grupo', error
 
     try:
-        auditgroup= iamclient.create_group(GroupName='Auditores')
+        auditgroup= iamclient.create_group(GroupName= NombreAuditG)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Auditores ya existe....usare el grupo existente')
@@ -77,7 +77,7 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
             return 'No se pudo crear el grupo', error
 
     try:
-        fingroup= iamclient.create_group(GroupName='Finanzas')    
+        fingroup= iamclient.create_group(GroupName= NombreFinG)    
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Finanzas ya existe....usare el grupo existente')
