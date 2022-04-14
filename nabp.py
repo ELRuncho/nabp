@@ -27,6 +27,10 @@ def core(config):
 
 @core.command('seguridad')
 @click.option('--nombre', default='miAnalyzer', help="nombre del analyzer")
+@click.option('--NombreAdminG', default='Administradores', help="nombre para el grupo de administradores")
+@click.option('--NombreDevG', default='Developers', help="nombre para el grupo de desarrolladores")
+@click.option('--NombreAuditG', default='Auditores', help="nombre para el grupo de auditores")
+@click.option('--NombreFinG', default='Finanzas', help="nombre para el grupo de finanzas")
 @pass_config
 def coresec(config, nombre):
     "Desplega medidas de seguridad core. Access analizer, 4 grupos IAM, y usuarios base de esos grupos"
@@ -44,16 +48,62 @@ def coresec(config, nombre):
                 
     click.echo('creado analyzer')
 
-    admingroup= iamclient.create_group(GroupName='Administradores')
-    devgroup= iamclient.create_group(GroupName='Developers')
-    auditgroup= iamclient.create_group(GroupName='Auditores')
-    fingroup= iamclient.create_group(GroupName='Finanzas')
+    try:
+        admingroup= iamclient.create_group(GroupName='Administradores')
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El groupo Administradores ya existe....usare el grupo existente')
+        else:
+            print('Error inesperado al crear el grupo.. saliendo', error)
+            return 'No se pudo crear el grupo', error
+
+    try:
+        devgroup= iamclient.create_group(GroupName='Developers')    
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El groupo Developers ya existe....usare el grupo existente')
+        else:
+            print('Error inesperado al crear el grupo.. saliendo', error)
+            return 'No se pudo crear el grupo', error
+
+    try:
+        auditgroup= iamclient.create_group(GroupName='Auditores')
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El groupo Auditores ya existe....usare el grupo existente')
+        else:
+            print('Error inesperado al crear el grupo.. saliendo', error)
+            return 'No se pudo crear el grupo', error
+
+    try:
+        fingroup= iamclient.create_group(GroupName='Finanzas')    
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El groupo Finanzas ya existe....usare el grupo existente')
+        else:
+            print('Error inesperado al crear el grupo.. saliendo', error)
+            return 'No se pudo crear el grupo', error
+    
+    iamclient.attach_group_policy(
+                                    GroupName=admingroup['Group']['GroupName'],
+                                    PolicyArn='arn:aws:iam::aws:policy/AdministratorAccess'
+                                )
+
+    iamclient.attach_group_policy(
+                                    GroupName=auditgroup['Group']['GroupName'],
+                                    PolicyArn='arn:aws:iam::aws:policy/ReadOnlyAccess'
+                                )
+
+    iamclient.attach_group_policy(
+                                    GroupName=fingroup['Group']['GroupName'],
+                                    PolicyArn='arn:aws:iam::aws:policy/job-function/Billing'
+                                )
+
+    
 
     click.echo('grupos IAM base creados')
 
-    adminrole= iamclient.create_role(
-                                        RoleName= 'NABPAdminRole',
-                                    )
+    
 
 
 @core.command('presupuesto')
