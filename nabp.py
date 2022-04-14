@@ -32,6 +32,8 @@ def coresec(config, nombre):
     
     analyzerclient = sess.client('accessanalyzer')
 
+    iamclient = sess.client('iam')
+
     click.echo('creando analyzer')
     analyzerclient.create_analyzer(
                                     analyzerName= nombre,
@@ -39,6 +41,15 @@ def coresec(config, nombre):
                                 )
                 
     click.echo('creado analyzer')
+
+    admingroup= iamclient.creategroup(GroupName='Administradores')
+    devgroup= iamclient.creategroup(GroupName='Developers')
+    auditgroup= iamclient.creategroup(GroupName='Auditores')
+    fingroup= iamclient.creategroup(GroupName='Finanzas')
+
+    click.echo('grupos IAM base creados')
+
+    
 
 
 @core.command('presupuesto')
