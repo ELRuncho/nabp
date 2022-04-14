@@ -1,3 +1,4 @@
+from email.policy import Policy
 import click
 import boto3
 import json, string, random
@@ -26,13 +27,13 @@ def core(config):
 
 
 @core.command('seguridad')
-@click.option('--nombre', default='miAnalyzer', help="nombre del analyzer")
+@click.option('--AnalyzerNombre', default='miAnalyzer', help="nombre del analyzer")
 @click.option('--NombreAdminG', default='Administradores', help="nombre para el grupo de administradores")
 @click.option('--NombreDevG', default='Developers', help="nombre para el grupo de desarrolladores")
 @click.option('--NombreAuditG', default='Auditores', help="nombre para el grupo de auditores")
 @click.option('--NombreFinG', default='Finanzas', help="nombre para el grupo de finanzas")
 @pass_config
-def coresec(config, nombre):
+def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFinG):
     "Desplega medidas de seguridad core. Access analizer, 4 grupos IAM, y usuarios base de esos grupos"
     sess = config.session
     
@@ -42,7 +43,7 @@ def coresec(config, nombre):
 
     click.echo('creando analyzer')
     analyzerclient.create_analyzer(
-                                    analyzerName= nombre,
+                                    analyzerName= AnalyzerNombre,
                                     type= 'ACCOUNT'
                                 )
                 
@@ -99,9 +100,78 @@ def coresec(config, nombre):
                                     PolicyArn='arn:aws:iam::aws:policy/job-function/Billing'
                                 )
 
+    iamclient.attach_group_policy(
+                                    GroupName=devgroup['Group']['GroupName'],
+                                    PolicyArn='arn:aws:iam::aws:policy/PowerUserAccess'
+                                )
+
+    click.echo('Grupos y politicas creadas')
+
     
 
     click.echo('grupos IAM base creados')
+
+    try:
+        admin1= iamclient.create_user(UserName='Admin1',)
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El usuario Admin1 ya existe')
+            return 'el usuario ya existe'
+        else:
+            click.echo('Error inesperado al crear el usuario', error)
+            return 'no se pudo crear el usuario', error
+    
+    try:
+        dev1= iamclient.create_user(UserName='dev1',)
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El usuario dev1 ya existe')
+            return 'el usuario ya existe'
+        else:
+            click.echo('Error inesperado al crear el usuario', error)
+            return 'no se pudo crear el usuario', error 
+
+    try:
+        aud1= iamclient.create_user(UserName='aud1',)
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El usuario aud1 ya existe')
+            return 'el usuario ya existe'
+        else:
+            click.echo('Error inesperado al crear el usuario', error)
+            return 'no se pudo crear el usuario', error
+
+    try:
+        fin1= iamclient.create_user(UserName='fin1',)
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('El usuario fin1 ya existe')
+            return 'el usuario ya existe'
+        else:
+            click.echo('Error inesperado al crear el usuario', error)
+            return 'no se pudo crear el usuario', error
+
+    iamclient.add_user_to_group(
+                                GroupName=admingroup['Group']['GroupName'],
+                                UserName=admin1['User']['UserName']
+                            )
+    
+    iamclient.add_user_to_group(
+                                GroupName=devgroup['Group']['GroupName'],
+                                UserName=dev1['User']['UserName']
+                            )
+    
+    iamclient.add_user_to_group(
+                                GroupName=auditgroup['Group']['GroupName'],
+                                UserName=aud1['User']['UserName']
+                            )
+
+    iamclient.add_user_to_group(
+                                GroupName=fingroup['Group']['GroupName'],
+                                UserName=fin1['User']['UserName']
+                            )
+
+
 
     
 
