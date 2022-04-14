@@ -1,5 +1,7 @@
 import click
 import boto3
+import json, string, random
+from botocore.exceptions import ClientError
 
 class Config(object):
     def __init__(self):
@@ -42,14 +44,16 @@ def coresec(config, nombre):
                 
     click.echo('creado analyzer')
 
-    admingroup= iamclient.creategroup(GroupName='Administradores')
-    devgroup= iamclient.creategroup(GroupName='Developers')
-    auditgroup= iamclient.creategroup(GroupName='Auditores')
-    fingroup= iamclient.creategroup(GroupName='Finanzas')
+    admingroup= iamclient.create_group(GroupName='Administradores')
+    devgroup= iamclient.create_group(GroupName='Developers')
+    auditgroup= iamclient.create_group(GroupName='Auditores')
+    fingroup= iamclient.create_group(GroupName='Finanzas')
 
     click.echo('grupos IAM base creados')
 
-
+    adminrole= iamclient.create_role(
+                                        RoleName= 'NABPAdminRole',
+                                    )
 
 
 @core.command('presupuesto')
