@@ -107,10 +107,6 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
 
     click.echo('Grupos y politicas creadas')
 
-    
-
-    click.echo('grupos IAM base creados')
-
     try:
         admin1= iamclient.create_user(UserName='Admin1',)
     except ClientError as error:
