@@ -20,14 +20,14 @@ def cli(config,profile):
 @cli.group('core')
 @pass_config
 def core(config):
-    """comandos seguridad core"""
+    """Comandos core"""
 
 
 @core.command('seguridad')
 @click.option('--nombre', default='miAnalyzer', help="nombre del analyzer")
 @pass_config
 def coresec(config, nombre):
-    "desplegar medidas de seguridad core"
+    "Desplega medidas de seguridad core. Access analizer, 4 grupos IAM, y usuarios base de esos grupos"
     sess = config.session
     
     analyzerclient = sess.client('accessanalyzer')
@@ -49,7 +49,7 @@ def coresec(config, nombre):
 
     click.echo('grupos IAM base creados')
 
-    
+
 
 
 @core.command('presupuesto')
