@@ -16,7 +16,6 @@ def cli(config,profile):
     if profile is None:
         profile='default'
     config.profile = profile
-    click.echo("nabp ")
 
 @cli.group('core')
 @pass_config
@@ -400,4 +399,4 @@ def crear(config, rango, region):
         RouteTableId= privateroute['RouteTable']['RouteTableId'],
         SubnetId= PrivateSubnetC['Subnet']['SubnetId'],
     )
-    
+    click.echo('rutas asociadas')
