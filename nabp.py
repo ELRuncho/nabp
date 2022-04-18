@@ -183,7 +183,7 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('el perfil de login de admin1 ya existe')
         else:
-            click.echo('error inesperado...saliendo', error)
+            print('error inesperado...saliendo', error)
             return 'perfil de login no se pudo crear', error
 
     click.echo('El usuario {0} se creo con password temporal: {1}'.format(admin1['User']['UserName'],adminpwd))
@@ -198,7 +198,7 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('el perfil de login de dev1 ya existe')
         else:
-            click.echo('error inesperado...saliendo', error)
+            print('error inesperado...saliendo', error)
             return 'perfil de login no se pudo crear', error
 
     click.echo('El usuario {0} se creo con password temporal: {1}'.format(dev1['User']['UserName'],devpwd))
@@ -213,7 +213,7 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('el perfil de login de aud1 ya existe')
         else:
-            click.echo('error inesperado...saliendo', error)
+            print('error inesperado...saliendo', error)
             return 'perfil de login no se pudo crear', error
 
     click.echo('El usuario {0} se creo con password temporal: {1}'.format(aud1['User']['UserName'],audpwd))
@@ -228,7 +228,7 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('el perfil de login de fin1 ya existe')
         else:
-            click.echo('error inesperado...saliendo', error)
+            print('error inesperado...saliendo', error)
             return 'perfil de login no se pudo crear', error
 
     click.echo('El usuario {0} se creo con password temporal: {1}'.format(fin1['User']['UserName'],finpwd))
