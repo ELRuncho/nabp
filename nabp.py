@@ -27,13 +27,13 @@ def core(config):
 
 
 @core.command('seguridad')
-@click.option('--AnalyzerNombre', default='miAnalyzer', help="nombre del analyzer")
-@click.option('--NombreAdminG', default='Administradores', help="nombre para el grupo de administradores")
-@click.option('--NombreDevG', default='Developers', help="nombre para el grupo de desarrolladores")
-@click.option('--NombreAuditG', default='Auditores', help="nombre para el grupo de auditores")
-@click.option('--NombreFinG', default='Finanzas', help="nombre para el grupo de finanzas")
+@click.option('--analyzer_nombre', default='miAnalyzer', help="nombre del analyzer")
+@click.option('--nombre_admin_g', default='Administradores', help="nombre para el grupo de administradores")
+@click.option('--nombre_dev_g', default='Developers', help="nombre para el grupo de desarrolladores")
+@click.option('--nombre_audit_g', default='Auditores', help="nombre para el grupo de auditores")
+@click.option('--nombre_fin_g', default='Finanzas', help="nombre para el grupo de finanzas")
 @pass_config
-def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFinG):
+def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,nombre_fin_g):
     "Desplega medidas de seguridad core. Access analizer, 4 grupos IAM, y usuarios base de esos grupos"
     sess = config.session
     
@@ -43,14 +43,14 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
 
     click.echo('creando analyzer')
     analyzerclient.create_analyzer(
-                                    analyzerName= AnalyzerNombre,
+                                    analyzerName= analyzer_nombre,
                                     type= 'ACCOUNT'
                                 )
                 
     click.echo('creado analyzer')
 
     try:
-        admingroup= iamclient.create_group(GroupName= NombreAdminG)
+        admingroup= iamclient.create_group(GroupName= nombre_admin_g)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Administradores ya existe....usare el grupo existente')
@@ -59,7 +59,7 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
             return 'No se pudo crear el grupo', error
 
     try:
-        devgroup= iamclient.create_group(GroupName= NombreDevG)    
+        devgroup= iamclient.create_group(GroupName= nombre_dev_g)    
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Developers ya existe....usare el grupo existente')
@@ -68,7 +68,7 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
             return 'No se pudo crear el grupo', error
 
     try:
-        auditgroup= iamclient.create_group(GroupName= NombreAuditG)
+        auditgroup= iamclient.create_group(GroupName= nombre_audit_g)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Auditores ya existe....usare el grupo existente')
@@ -77,7 +77,7 @@ def coresec(config, AnalyzerNombre,NombreAdminG,NombreDevG,NombreAuditG,NombreFi
             return 'No se pudo crear el grupo', error
 
     try:
-        fingroup= iamclient.create_group(GroupName= NombreFinG)    
+        fingroup= iamclient.create_group(GroupName= nombre_fin_g)    
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
             click.echo('El groupo Finanzas ya existe....usare el grupo existente')
