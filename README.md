@@ -3,52 +3,17 @@
 
 - 🔭 [Como crear una nueva cuenta](https://github.com/ELRuncho/nabp#como-crear-una-nueva-cuenta)
 
-- 👤 Crear usuario administrador 
+- 👤 [Crear usuario administrador]
 
-- 🚀 Como instalar nabp **test**
+- 🚀 [Como instalar nabp](https://github.com/ELRuncho/nabp#como-instalar-nabp)
 
-- 👯 Comandos core [test](example.com)
+- 👯 [Comandos core](https://github.com/ELRuncho/nabp#comandos-core)
 
-- 🤝 Comandos Network [test](example.com)
+- 🤝 [Comandos Network](https://github.com/ELRuncho/nabp#comandos-network)
 
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
-asdasdasdasdasdasdasdasdads
 ## Como crear una nueva cuenta
+
+## Crear usuario administrador
 
 ## Como instalar nabp
 
