@@ -3,7 +3,7 @@
 
 - 🔭 [Como crear una nueva cuenta](https://github.com/ELRuncho/nabp#como-crear-una-nueva-cuenta)
 
-- 👤 [Crear usuario administrador]
+- 👤 [Crear usuario administrador](https://github.com/ELRuncho/nabp#crear-usuario-administrador)
 
 - 🚀 [Como instalar nabp](https://github.com/ELRuncho/nabp#como-instalar-nabp)
 
