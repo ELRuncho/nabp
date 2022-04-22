@@ -13,6 +13,7 @@
 
 ## Como crear una nueva cuenta
 1. Abra la [página de inicio de Amazon Web Services (AWS)](https://aws.amazon.com/).
+    ![](./images/awshome.png)
 2. Elija Create an AWS Account (Crear una cuenta de AWS).
 Nota: Si ha iniciado sesión en AWS recientemente, elija Iniciar sesión en la consola. Si Create a new AWS account (Crear una nueva cuenta de AWS) no es visible, elija primero Sign in to a different account (Iniciar sesión con una cuenta diferente) y, a continuación, Create a new AWS account (Crear una nueva cuenta de AWS).
 3. En Root user email address (Email del usuario raíz), escriba su email, edite el nombre de la cuenta de AWS y, a continuación, elija Verify email address (Verificar email). Se enviará un email de verificación de AWS a esta dirección con un código de verificación.
