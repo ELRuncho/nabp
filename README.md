@@ -1,5 +1,5 @@
-<h1 align="center">NABP, Mejores Practicas para una nueva cuenta de AWS</h1>
-<h3 align="center">lorem ipsum dolor sitamet</h3>
+<h1 align="center">NABP Linea de comandos</h1>
+<h3 align="center">Mejores practicas para una nueva cuenta de AWS</h3>
 
 - 🔭 I’m currently working on [test](example.com)
 
