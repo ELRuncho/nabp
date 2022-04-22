@@ -1,7 +1,9 @@
 <h1 align="center">NABP Linea de comandos</h1>
 <h3 align="center">Mejores practicas para una nueva cuenta de AWS</h3>
 
-- 🔭 Como crear una nueva cuenta [test](example.com)
+- 🔭 [Como crear una nueva cuenta][#como-crear-una-nueva-cuenta]
+
+- 👤 Crear usuario administrador 
 
 - 🚀 Como instalar nabp **test**
 
@@ -9,7 +11,7 @@
 
 - 🤝 Comandos Network [test](example.com)
 
-## Como crear una Nueva Cuenta
+## Como crear una nueva cuenta
 
 ## Como instalar nabp
 
