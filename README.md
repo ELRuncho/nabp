@@ -1,20 +1,15 @@
 <h1 align="center">NABP Linea de comandos</h1>
 <h3 align="center">Mejores practicas para una nueva cuenta de AWS</h3>
 
-- 🔭 I’m currently working on [test](example.com)
+- 🔭 Como crear una nueva cuenta [test](example.com)
 
-- 🌱 I’m currently learning **test**
+- 🚀 Como instalar nabp **test**
 
-- 👯 I’m looking to collaborate on [test](example.com)
+- 👯 Comandos core [test](example.com)
 
-- 🤝 I’m looking for help with [test](example.com)
+- 🤝 Comandos Network [test](example.com)
 
-- 👨‍💻 All of my projects are available at [example.com](example.com)
-
-- 💬 Ask me about **test**
-
-- 📫 How to reach me **test**
-
+## Como crear una Nueva Cuenta
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://linkedin.com/in/rafael" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="rafael" height="30" width="40" /></a>
