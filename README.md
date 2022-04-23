@@ -90,14 +90,6 @@ Puede iniciar sesión en su cuenta de AWS durante ese tiempo. La página de inic
 
 Cuando su cuenta se haya activado por completo, recibirá un email de confirmación. Compruebe su email y la carpeta de spam para encontrar el email de confirmación. Después de recibir este email, tendrá acceso completo a todos los servicios de AWS.
 
-
-
-
-
-
-
-
-
 ## Crear usuario administrador
 
 ## Como instalar nabp
