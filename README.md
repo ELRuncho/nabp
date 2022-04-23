@@ -143,6 +143,20 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 
     ![](./images/downloadkeys.png)
 
+    **importante:**
+        Esta es la única oportunidad que tiene para ver o descargar las claves de acceso secretas, y debe proporcionar dicha información a los usuarios para que puedan usar la API de AWS. Guarde el nuevo ID de clave de acceso del usuario y la clave de acceso secreta en un lugar seguro. No volverá a tener acceso a la clave de acceso secreta después de este paso.
+
+    ![](./images/final.png)
+
+12. Proporcione a cada usuario sus credenciales. En la página final puede elegir Send email (Enviar correo electrónico) junto a cada usuario. Su cliente de correo local se abrirá con un borrador que puede personalizar y enviar. La plantilla de correo electrónico contiene los detalles siguientes por cada usuario:
+
+    - Nombre de usuario
+
+    - URL de la página de inicio de sesión de la cuenta. Utilice el ejemplo siguiente y realice la sustitución con el número de ID o de alias de cuenta correcto:
+
+        `https://AWS-account-ID or alias.signin.aws.amazon.com/console`
+
+    Para obtener más información, consulte [Cómo inician sesión los usuarios de IAM en AWS.](https://docs.aws.amazon.com/es_es/IAM/latest/UserGuide/id_users_sign-in.html) 
 
 ## Como instalar nabp
 
