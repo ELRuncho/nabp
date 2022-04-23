@@ -118,6 +118,8 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 5. Elija Next: Permissions (Siguiente: Permisos).
 
 6. En la página Set permissions (Establecer permisos), especifique la forma en que quiera asignar permisos a este conjunto de nuevos usuarios. Elija una de las siguientes tres opciones:
+    
+    ![](./images/policy.png)
 
     - **Add user to group (Añadir un usuario al grupo)**. Elija esta opción si desea asignar los usuarios a uno o a varios grupos que ya tienen políticas de permisos. IAM muestra una lista de los grupos de la cuenta, junto con sus políticas asociadas. Puede seleccionar uno o varios grupos existentes o elegir Create group (Crear grupo) para crear un grupo nuevo. Para obtener más información, consulte Cambio de los permisos de un usuario de IAM.
 
@@ -132,6 +134,7 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 8. Elija Next: Tags (Siguiente: Etiquetas).
 
 9. (Opcional) Añadir metadatos al rol asociando las etiquetas como pares de clave-valor. Para obtener más información acerca del uso de etiquetas en IAM, consulte Etiquetado de recursos de IAM.
+    ![](./images/tags.png)
 
 10. Elija **Next: Review (Siguiente. Revisar)** para ver todas las opciones que ha realizado hasta este punto. Cuando esté listo para continuar, elija Create user **(Crear usuario)**.
 
