@@ -61,6 +61,17 @@ Si desea utilizar una dirección de facturación diferente para la información 
 
 ![](./images/creditcard.png)
 
+### Verifique su número de teléfono
+
+1. En la página Confirme su identidad, seleccione un método de contacto para recibir un código de verificación.
+2. Seleccione el país o código de región de su número de teléfono en la lista.
+3. Ingrese un número de teléfono móvil en el que se le pueda contactar durante los próximos minutos.
+4. Si aparece un CAPTCHA, ingrese el código mostrado y luego envíelo.
+5. Transcurridos unos instantes, un sistema automatizado le contactará.
+6. Escriba el PIN recibido y luego elija **Continuar**.
+
+
+
 ## Crear usuario administrador
 
 ## Como instalar nabp
