@@ -9,8 +9,7 @@ setup(
         'Click',
         'boto3'
     ],
-    entry_points='''
-        [console_scripts]
-        nabp=nabp:cli
-    ''',
+    entry_points= {
+        'console_script':['nabp=nabp:cli']
+    }
 )
