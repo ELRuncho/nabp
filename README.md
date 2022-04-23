@@ -27,6 +27,9 @@
 
 Ingrese el código que reciba y, a continuación, seleccione Verify (Verificar). El código puede tardar unos minutos en llegar. Compruebe su email y la carpeta de spam para el email de código de verificación.
 
+![](./images/emailcode.png)
+
+
 ### Cree su contraseña
 
 Ingrese su contraseña de usuario raíz, confirme la contraseña de usuario raíz y, a continuación, seleccione Continue (Continuar).
