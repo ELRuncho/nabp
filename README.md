@@ -81,6 +81,17 @@ Elija Finalizar inscripción.
 
 ![](./images/support.png)
 
+### Espere a que se active la cuenta
+
+Después de elegir un plan de Support, una página de confirmación le indica que su cuenta está siendo activada. Por lo general, las cuentas se activan en unos pocos minutos, aunque el proceso puede tardar hasta 24 horas.
+
+![](./images/complete.png)
+
+Puede iniciar sesión en su cuenta de AWS durante ese tiempo. La página de inicio de AWS puede mostrar el botón **Completar el inicio de sesión** durante ese plazo de tiempo, incluso si ya ha completado todos los pasos del proceso de inicio de sesión.
+
+Cuando su cuenta se haya activado por completo, recibirá un email de confirmación. Compruebe su email y la carpeta de spam para encontrar el email de confirmación. Después de recibir este email, tendrá acceso completo a todos los servicios de AWS.
+
+
 
 
 
