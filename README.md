@@ -64,11 +64,27 @@ Si desea utilizar una dirección de facturación diferente para la información 
 ### Verifique su número de teléfono
 
 1. En la página Confirme su identidad, seleccione un método de contacto para recibir un código de verificación.
+    ![](./images/phone.png)
 2. Seleccione el país o código de región de su número de teléfono en la lista.
 3. Ingrese un número de teléfono móvil en el que se le pueda contactar durante los próximos minutos.
+    ![](./images/phone.png)
 4. Si aparece un CAPTCHA, ingrese el código mostrado y luego envíelo.
 5. Transcurridos unos instantes, un sistema automatizado le contactará.
 6. Escriba el PIN recibido y luego elija **Continuar**.
+    ![](./images/phonecode.png)
+
+### Elija un plan de AWS Support
+
+En la página Seleccione un plan de soporte, elija uno de los planes de soporte disponibles. Para ver la descripción de los planes de soporte disponibles y sus beneficios, consulte Compare los planes de AWS Support.
+
+Elija Finalizar inscripción.
+
+![](./images/support.png)
+
+
+
+
+
 
 
 
