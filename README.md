@@ -38,14 +38,14 @@ Ingrese su contraseña de usuario raíz, confirme la contraseña de usuario raí
 
 ### Agregue su información de contacto
 
-    1. Seleccione Personal (Personal) o Business (Empresa).
-        **Nota:** Las cuentas personales y empresariales tienen las mismas características y funciones.
-    2. Ingrese su información personal o empresarial.
-        **Importante:** Para cuentas de AWS empresariales, se recomienda ingresar el número de teléfono de la empresa en lugar de un número de teléfono móvil personal. Configurar una cuenta raíz con una dirección de email o un número de teléfono personales puede provocar que la cuenta no sea segura.
-    3. Lea y acepte el Contrato de usuario de AWS.
-    4. Elija **Continuar**.
+1. Seleccione Personal (Personal) o Business (Empresa).
+    **Nota:** Las cuentas personales y empresariales tienen las mismas características y funciones.
+2. Ingrese su información personal o empresarial.
+    **Importante:** Para cuentas de AWS empresariales, se recomienda ingresar el número de teléfono de la empresa en lugar de un número de teléfono móvil personal. Configurar una cuenta raíz con una dirección de email o un número de teléfono personales puede provocar que la cuenta no sea segura.
+3. Lea y acepte el Contrato de usuario de AWS.
+4. Elija **Continuar**.
 
-    ![](./images/info.png)
+![](./images/info.png)
 
 Recibirá un email para confirmar que se ha creado su cuenta. Puede iniciar sesión en su nueva cuenta con la dirección de email y la contraseña que utilizó para registrarse. No obstante, no podrá utilizar los servicios de AWS hasta que termine de activar la cuenta.
 
