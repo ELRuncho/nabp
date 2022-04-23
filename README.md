@@ -164,8 +164,9 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 
 1. Python3.10 o superior [Python](https://www.python.org/downloads/)
 2. AWS CLI [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-    - Al instlar la linea de comandos usa las llaves obtenidas del usuario admin creado anteriormente con el comando `aws configure`
+    - Al instalar la linea de comandos usa las llaves obtenidas del usuario admin creado anteriormente con el comando 
         ```
+            $ aws configure
             AWS Access Key ID: <Access key del usario>
             AWS Secret Access Key: <Access key del usario>
             Default region name: us-east-1 <us-east-1 es la region por defecto>
