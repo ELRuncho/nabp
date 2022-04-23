@@ -137,8 +137,13 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
     ![](./images/tags.png)
 
 10. Elija **Next: Review (Siguiente. Revisar)** para ver todas las opciones que ha realizado hasta este punto. Cuando esté listo para continuar, elija Create user **(Crear usuario)**.
+    ![](./images/review.png)
 
 11. Para ver las claves de acceso de los usuarios (los ID de las claves de acceso y las claves de acceso secretas), elija **Show (Mostrar)** junto a cada contraseña y clave de acceso secreta que desee ver. Para guardar las claves de acceso, elija **Download .csv (Descargar archivo .csv)** y, a continuación, guarde el archivo en un lugar seguro. 
+
+    ![](./images/downloadkeys.png)
+
+
 ## Como instalar nabp
 
 ## Comandos Core
