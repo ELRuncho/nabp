@@ -224,15 +224,18 @@ Este comando activa **Access Analyzer** que automaticamente analiza las politica
 
 Este comando tambien crea cuatro grupos de usuarios de IAM les asigna permisos especificos para cada grupo y tambien crea un usuario en cada grupo. Los grupos que crea son los siguientes:
 
-- **Administradores**
-- **Developers**
-- **Auditores**
-- **Finanzasz**
+- **Administradores:** Grupo para Administradores, este grupo tiene permisos completos de administrador para aws
+- **Developers:** Grupo para Desarrolladores, este grupo tiene permisos de power user, permite crear recursos pero no modificar politicas de seguridad ni informacion de billing
+- **Auditores:** Grupo para Auditores, este grupo tiene permisos de solo lectura, pensado para auditores que requieran poder ver y revisar recursos, politicas, configuraciones, etc. Pero no permite realizar ningun cambio
+- **Finanzasz:** Grupo para Finanzas, este grupo tiene permisos para acceder solamente la informacion de facturacion y costos asi como poder crear presupuestos
 
-Este comando tiene las siguientes opciones:
+Este comando tiene las siguientes opciones (ninguno es requerido para poder ejecutar el comando):
 
-- **--analyzer** 
-- **
+- *--analyzer*: Nombre personalizado para al Access Analyzer 
+- *--nombre_admin_g*: Nombre personalizado para el grupo de administradores
+- *--nombre_dev_g*: Nombre personalizado para el grupo de desarrolladores
+- *--nombre_audit_g*: Nombre personalizado para el grupo de auditores
+- *--nombre_fin_g*: Nombre personalizado para el grupo de finanzas
 
 ### presupuesto
 
