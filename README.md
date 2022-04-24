@@ -177,7 +177,12 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 
         
         C:\> where /R c:\ <paquete aws o python/py>
-        
+
+### Instalacion
+
+1. Descarga nabp desde github ya sea descargando el zip o clonando el repositorio
+    `$ git clone https://github.com/ELRuncho/nabp.git`
+2. 
 
 
 ## Comandos Core
