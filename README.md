@@ -237,7 +237,7 @@ Este comando tiene las siguientes opciones (ninguno es requerido para poder ejec
 - `--nombre_audit_g`: Nombre personalizado para el grupo de auditores
 - `--nombre_fin_g`: Nombre personalizado para el grupo de finanzas
 
-**Ejemplo**
+**Ejemplo:**
 
 Sin opciones:
 
