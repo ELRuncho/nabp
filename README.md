@@ -216,7 +216,7 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 
 ## Comandos Core
 
-    Estos comandos crean configuracion base para la cuenta
+Estos comandos crean configuracion base para la cuenta
 
 ### seguridad
 
