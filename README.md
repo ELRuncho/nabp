@@ -162,7 +162,7 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 
 ### Prerequisitos
 
-1. Python3.10 o superior [Python](https://www.python.org/downloads/)
+1. Python3.10 o superior y pip [Python](https://www.python.org/downloads/)
 2. AWS CLI [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
     - Al instalar la linea de comandos usa las llaves obtenidas del usuario admin creado anteriormente con el comando 
         ```
@@ -181,8 +181,20 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 ### Instalacion
 
 1. Descarga nabp desde github ya sea descargando el zip o clonando el repositorio
+
     `$ git clone https://github.com/ELRuncho/nabp.git`
-2. 
+
+2. Ingresa al folder:
+
+    `$ cd nabp`
+
+3. Instala nabp usando pip:
+
+    `$ pip install .`
+
+4. Confirma la instalacion:
+
+    `$ nabp --help`
 
 
 ## Comandos Core
