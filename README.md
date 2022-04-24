@@ -196,6 +196,19 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 
     `$ nabp --help`
 
+    - Si se instalo exitosamente deberias ver el siguiente output:
+        ```
+            Usage: nabp [OPTIONS] COMMAND [ARGS]...
+
+            Options:
+                --profile TEXT  perfil preferido de awscli
+                --help          Show this message and exit.
+
+            Commands:
+                core     Comandos core
+                network  Comandos networking
+        ```
+
 
 ## Comandos Core
 
