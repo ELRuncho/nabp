@@ -208,9 +208,34 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
                 core     Comandos core
                 network  Comandos networking
         ```
+5. (OPTIONAL) una vez instalado napb puedes definir el perfir del awscli para usar con nabp usando la opcion `--profile`
 
+    `$ nabp --profile <nombre perfil awslcli>`
+
+    Si no se define ningun perfil con la opcion `--profile` nabp usa el perfil default de awscli
 
 ## Comandos Core
+
+    Estos comandos crean configuracion base para la cuenta
+
+### seguridad
+
+    Este comando activa **Access Analyzer** que automaticamente analiza las politicas creadas de IAM basandose en los patrones de uso de los usarios y recursos y alerta en caso de que las poiticas sean muy holgadas y violen el principio de menor privilegio.
+
+    Este comando tambien crea cuatro grupos de usuarios de IAM les asigna permisos especificos para cada grupo y tambien crea un usuario en cada grupo. Los grupos que crea son los siguientes:
+
+        - **Administradores**
+        - **Developers**
+        - **Auditores**
+        - **Finanzasz**
+
+    Este comando tiene las siguientes opciones:
+        - **--analyzer** 
+        - **
+
+### presupuesto
+
+### 
 
 ## Comandos Network
 
