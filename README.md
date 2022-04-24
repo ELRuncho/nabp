@@ -231,11 +231,11 @@ Este comando tambien crea cuatro grupos de usuarios de IAM les asigna permisos e
 
 Este comando tiene las siguientes opciones (ninguno es requerido para poder ejecutar el comando):
 
-- *--analyzer*: Nombre personalizado para al Access Analyzer 
-- *--nombre_admin_g*: Nombre personalizado para el grupo de administradores
-- *--nombre_dev_g*: Nombre personalizado para el grupo de desarrolladores
-- *--nombre_audit_g*: Nombre personalizado para el grupo de auditores
-- *--nombre_fin_g*: Nombre personalizado para el grupo de finanzas
+- `--analyzer`: Nombre personalizado para al Access Analyzer 
+- `--nombre_admin_g`: Nombre personalizado para el grupo de administradores
+- `--nombre_dev_g`: Nombre personalizado para el grupo de desarrolladores
+- `--nombre_audit_g`: Nombre personalizado para el grupo de auditores
+- `--nombre_fin_g`: Nombre personalizado para el grupo de finanzas
 
 ### presupuesto
 
