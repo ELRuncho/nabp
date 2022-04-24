@@ -241,11 +241,11 @@ Este comando tiene las siguientes opciones (ninguno es requerido para poder ejec
 
 Sin opciones:
 
-        `$ nabp core seguridad`
+`$ nabp core seguridad`
 
 Con opciones:
     
-        `$ nabp core seguridad --analyzer miAnalyzer --nombre_admin_g AdminG --nombre_dev_g Devs`
+`$ nabp core seguridad --analyzer miAnalyzer --nombre_admin_g AdminG --nombre_dev_g Devs`
 
 ### presupuesto
 
