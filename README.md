@@ -210,7 +210,7 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
                 core     Comandos core
                 network  Comandos networking
         ```
-5. (OPTIONAL) una vez instalado napb puedes definir el perfir del awscli para usar con nabp usando la opcion `--profile`
+5. (OPTIONAL) una vez instalado napb puedes definir el perfil del awscli para usar con nabp usando la opcion `--profile`
 
     `$ nabp --profile <nombre perfil awslcli>`
 
