@@ -238,11 +238,12 @@ Este comando tiene las siguientes opciones (ninguno es requerido para poder ejec
 - `--nombre_fin_g`: Nombre personalizado para el grupo de finanzas
 
 **Ejemplo**
-    Sin opciones:
+
+Sin opciones:
 
         `$ nabp core seguridad`
 
-    Con opciones:
+Con opciones:
     
         `$ nabp core seguridad --analyzer miAnalyzer --nombre_admin_g AdminG --nombre_dev_g Devs`
 
