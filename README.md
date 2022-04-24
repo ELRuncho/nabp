@@ -174,7 +174,10 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
 **Importante:**
     En Windows, si python o el AWS cli, una vez instalados no se encuentran desde el command prompt se deben agregar a la variable de ambiente PATH.
     Para encontrar el folder que contiene el awscli o python puede usar el comando `where`:
-    ```C:\> where /R c:\ <paquete aws o python/py>```
+
+    ```
+     C:\> where /R c:\ <paquete aws o python/py>
+    ```
 
 
 ## Comandos Core
