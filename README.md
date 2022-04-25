@@ -233,7 +233,7 @@ Este comando tambien crea cuatro grupos de usuarios de IAM les asigna permisos e
 
 Este comando tiene las siguientes opciones (ninguno es requerido para poder ejecutar el comando):
 
-- `--analyzer`: Nombre personalizado para al Access Analyzer 
+- `--analyzer_nombre`: Nombre personalizado para al Access Analyzer 
 - `--nombre_admin_g`: Nombre personalizado para el grupo de administradores
 - `--nombre_dev_g`: Nombre personalizado para el grupo de desarrolladores
 - `--nombre_audit_g`: Nombre personalizado para el grupo de auditores
@@ -247,7 +247,7 @@ Sin opciones:
 
 Con opciones:
     
-`$ nabp core seguridad --analyzer miAnalyzer --nombre_admin_g AdminG --nombre_dev_g Devs`
+`$ nabp core seguridad --analyzer_nombre miAnalyzer --nombre_admin_g AdminG --nombre_dev_g Devs`
 
 ### presupuesto
 
