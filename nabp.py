@@ -185,10 +185,29 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
                             )
 
     characters = string.ascii_letters + string.digits + string.punctuation
-    adminpwd= ''.join(random.choice(characters) for i in range(8))
-    devpwd= ''.join(random.choice(characters) for i in range(8))
-    audpwd= ''.join(random.choice(characters) for i in range(8))
-    finpwd= ''.join(random.choice(characters) for i in range(8))
+    adminpwd = random.choice(string.ascii_lowercase)
+    adminpwd += random.choice(string.ascii_uppercase)
+    adminpwd += random.choice(string.digits)
+    adminpwd += random.choice(string.punctuation)
+    adminpwd+= ''.join(random.choice(characters) for i in range(4))
+
+    devpwd = random.choice(string.ascii_lowercase)
+    devpwd += random.choice(string.ascii_uppercase)
+    devpwd += random.choice(string.digits)
+    devpwd += random.choice(string.punctuation)
+    devpwd= ''.join(random.choice(characters) for i in range(4))
+
+    audpwd = random.choice(string.ascii_lowercase)
+    audpwd += random.choice(string.ascii_uppercase)
+    audpwd += random.choice(string.digits)
+    audpwd += random.choice(string.punctuation)
+    audpwd= ''.join(random.choice(characters) for i in range(4))
+
+    finpwd = random.choice(string.ascii_lowercase)
+    finpwd += random.choice(string.ascii_uppercase)
+    finpwd += random.choice(string.digits)
+    finpwd += random.choice(string.punctuation)
+    finpwd= ''.join(random.choice(characters) for i in range(4))
     
     try:
         admin1login=iamclient.create_login_profile(
