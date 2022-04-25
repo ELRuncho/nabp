@@ -261,7 +261,6 @@ def presupuesto(config, nombre,monto, email):
     "establece presupuesto y alertas"
     sess = config.session
     id = sess.client('sts').get_caller_identity()['Account']
-    print(id)
     budget=sess.client("budgets")
 
     click.echo(" creando budget y alerta asociada")
