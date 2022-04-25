@@ -9,6 +9,6 @@ setup(
         'boto3'
     ],
     entry_points= {
-        'console_scripts':['nabp=nabp:cli']
-    }
+        'console_scripts':['nabp=nabp:cli',],
+    },
 )
