@@ -261,6 +261,7 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
 def presupuesto(config, id, nombre,monto, email):
     "establece presupuesto y alertas"
     sess = config.session
+    id = sess.client('sts').get_caller_identity()['account']
     budget=sess.client("budgets")
 
     click.echo(" creando budget y alerta asociada")
