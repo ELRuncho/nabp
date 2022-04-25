@@ -253,15 +253,15 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
 
 
 @core.command('presupuesto')
-@click.option('--id', default=None, help="id de la cuenta de aws")
 @click.option('--nombre', default=None, help='mnombre del presupuesto a crear')
 @click.option('--monto', default=None, help='monto, en USD, del presupuesto a crear')
 @click.option('--email', default=None, help='email para enviar notificaciones relacionadas con el presupuesto')
 @pass_config
-def presupuesto(config, id, nombre,monto, email):
+def presupuesto(config, nombre,monto, email):
     "establece presupuesto y alertas"
     sess = config.session
     id = sess.client('sts').get_caller_identity()['Account']
+    print(id)
     budget=sess.client("budgets")
 
     click.echo(" creando budget y alerta asociada")
