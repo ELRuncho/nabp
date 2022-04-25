@@ -251,6 +251,24 @@ Con opciones:
 
 ### presupuesto
 
+Este comando crea un presupuesto en la cuenta de aws y dos alertas, una al cumplirse el 60% del presupuesto en consumo y otra al cumplirse el 90%. Estas alertas se enviaran al email definido en el comando
+
+Este comando tiene las siguientes opciones:
+
+- `--nombre`: Nombre personalizado de el presupesto 
+- `--monto` **(requerido)**: Monto maximo del presupuesto, el valor esta dado en dolares (USD)
+- `--email` **(requerido)**: Email al que se enviaran las alertas
+
+**Ejemplo:**
+
+Sin nombre:
+
+`$ nabp core presupuesto --monto 200 --email admin@empresa.com`
+
+Con nombre:
+
+`$ nabp core presupuesto --nombre miPresupuesto --monto 200 --email admin@empresa.com`
+
 ### 
 
 ## Comandos Network
