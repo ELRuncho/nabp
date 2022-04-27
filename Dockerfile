@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip3 install aws-cli -y
+RUN pip3 install aws-cli
 
 RUN pip3 install .
 
