@@ -347,7 +347,7 @@ def network(config):
 
 @network.command('crear')
 @click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
-@click.option('--region', default='use-east-1', help='Region sobre la que se desplegara la VPC')
+@click.option('--region', default='us-east-1', help='Region sobre la que se desplegara la VPC')
 @pass_config
 def crear(config, rango, region):
     "crea VPC con CIDR /16 y subnets con rango /24"
