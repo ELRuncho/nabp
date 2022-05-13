@@ -58,23 +58,6 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
 
     iamclient = sess.client('iam')
 
-    click.echo('creando analyzer')
-
-    try:
-        analyzerclient.create_analyzer(
-                                    analyzerName= analyzer_nombre,
-                                    type= 'ACCOUNT'
-                                   )
-    except ClientError as error:
-        if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('Ya existe un analyzer con el nombre especificado... continuando')
-        else:
-            print('Error inesperado al crear el analyzer... saliendo')
-            return 'No se pudo crear el analyzer', error
-
-
-    click.echo('creado analyzer')
-
     try:
         admingroup= iamclient.create_group(GroupName= nombre_admin_g)
     except ClientError as error:
@@ -277,6 +260,23 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
             return 'perfil de login no se pudo crear', error
 
     click.echo('El usuario {0} se creo con password temporal: {1}'.format(fin1['User']['UserName'],finpwd))
+
+
+    click.echo('creando analyzer')
+
+    try:
+        analyzerclient.create_analyzer(
+                                    analyzerName= analyzer_nombre,
+                                    type= 'ACCOUNT'
+                                   )
+    except ClientError as error:
+        if error.response['Error']['Code']=='EntityAlreadyExist':
+            click.echo('Ya existe un analyzer con el nombre especificado... continuando')
+        else:
+            print('Error inesperado al crear el analyzer... saliendo')
+            return 'No se pudo crear el analyzer', error
+    
+    click.echo('Analyzer Creado')
 
 
 
