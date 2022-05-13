@@ -70,8 +70,7 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
             click.echo('Ya existe un analyzer con el nombre especificado... continuando')
         else:
             print('Error inesperado al crear el analyzer... saliendo')
-            return 'No se pudo crear el analyzer', error
-
+            pass
 
     click.echo('creado analyzer')
 
