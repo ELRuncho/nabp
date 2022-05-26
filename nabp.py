@@ -638,3 +638,23 @@ def crear(config, rango, region):
         SubnetId= PrivateSubnetC['Subnet']['SubnetId'],
     )
     click.echo('rutas asociadas')
+
+
+@cli.group('monitor')
+@pass_config
+def monitor(config):
+    """Comandos monitoreo"""
+
+@monitor.command('trail')
+@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+@pass_config
+def trail(config):
+    "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
+    sess= config.session
+
+@monitor.command('configuracion')
+@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+@pass_config
+def configuracion(config):
+    "Habilita aws config con reglas basicas para monitorear configuracion de recursos"
+    sess= config.session
