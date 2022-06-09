@@ -651,6 +651,9 @@ def monitor(config):
 def trail(config):
     "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
     sess= config.session
+    # enable cloudtrail all regions
+    
+
 
 @monitor.command('configuracion')
 @click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
@@ -658,3 +661,19 @@ def trail(config):
 def configuracion(config):
     "Habilita aws config con reglas basicas para monitorear configuracion de recursos"
     sess= config.session
+    # alert on public s3 buckets
+    # alert open SG
+    # RDS instances open to internet
+    # automation on config rules
+    # review MFA enabled
+    # enforce MFA?
+
+# Habilitar Guard duty
+# guar duty findings
+# security hub ?
+# habilitar Macie ?
+# Session Manager for ec2 ?
+# patch manager ?
+# rules for rotating IAM keys?
+# activate aws SSO?
+
