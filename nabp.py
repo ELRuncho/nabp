@@ -16,6 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  """
 
+from tokenize import Name
 import click
 import boto3
 import json, string, random
@@ -654,21 +655,39 @@ def trail(config):
     trail= sess.client('cloudtrail')
     s3= sess.client('s3')
     s3r= sess.resource('s3')
-    bucketName= 'nabp-trail-bucket'+ ''.join(random.choice(string.digits) for i in range(8))
+    trailBucketName= 'nabp-trail-bucket'+ ''.join(random.choice(string.digits) for i in range(8))
     
-    while s3r.Bucket(bucketName) in s3r.buckets.all():
-        bucketName= 'nabp-trail-bucket'+ ''.join(random.choice(string.digits) for i in range(8))
+    while s3r.Bucket(trailBucketName) in s3r.buckets.all():
+        trailBucketName= 'nabp-trail-bucket'+ ''.join(random.choice(string.digits) for i in range(8))
     
     #create s3 buckets to store trails
     trailbucket= s3.create_bucket(
-        Bucket= bucketName,
+        Bucket= trailBucketName,
         CreateBucketConfiguration={
             'LocationConstraint': 'us-west-2'
         },
     )
     click.echo('trailbucket creado')
-    
-    # create trail
+
+    # create trail for all regions
+    nabptrail= trail.create_trail(
+        Name='nabp-trail',
+        S3BucketName=trailBucketName,
+        S3KeyPrefix='new-account-trail',
+        #SNSTopicName='',
+        IncludeGlobalServiceEvents=True,
+        IsMultiRegionTrail=True,
+        EnableLogFileValidation=True,
+        #CloudWatchLogsLogGroupArn='string',
+        #CloudWatchLogsRoleArn='string',
+        #KmsKeyId='string',
+        TagsList=[
+            {
+                'Key': 'Creator',
+                'Value': 'NABP'
+            },
+        ]
+    )
 
 
     
