@@ -662,7 +662,7 @@ def trail(config):
             'LocationConstraint': 'us-west-2'
         },
     )
-
+    click.echo('trailbucket creado')
     # enable cloudtrail all regions
 
     
