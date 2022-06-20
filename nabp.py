@@ -651,7 +651,20 @@ def monitor(config):
 def trail(config):
     "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
     sess= config.session
+    trail= sess.client('cloudtrail')
+    s3= sess.config('s3')
+
+    #create s3 buckets to store trails
+
+    trailbucket= s3.create_bucket(
+        Bucket='nabpTrailBucket'+ random.choice(string.digits),
+        CreateBucketConfiguration={
+            'LocationConstraint': 'us-west-2'
+        },
+    )
+
     # enable cloudtrail all regions
+
     
 
 
