@@ -652,7 +652,7 @@ def trail(config):
     "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
     sess= config.session
     trail= sess.client('cloudtrail')
-    s3= sess.config('s3')
+    s3= sess.client('s3')
 
     #create s3 buckets to store trails
 
