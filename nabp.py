@@ -657,7 +657,7 @@ def trail(config):
     #create s3 buckets to store trails
 
     trailbucket= s3.create_bucket(
-        Bucket='nabpTrailBucket'+ random.choice(string.digits),
+        Bucket='nabpTrailBucket'+ ''.join(random.choice(string.digits)),
         CreateBucketConfiguration={
             'LocationConstraint': 'us-west-2'
         },
