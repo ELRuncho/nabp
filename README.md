@@ -11,7 +11,10 @@
 
 - 👯 [Comandos core](https://github.com/ELRuncho/nabp#comandos-core)
 
+- :eye: [Comandos Monitor](https://github.com/ELRuncho/nabp#comandos-monitor)
+
 - 🤝 [Comandos Network](https://github.com/ELRuncho/nabp#comandos-network)
+
 
 ## Como crear una nueva cuenta
 1. Abra la [página de inicio de Amazon Web Services (AWS)](https://aws.amazon.com/).
