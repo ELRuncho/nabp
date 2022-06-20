@@ -653,17 +653,23 @@ def trail(config):
     sess= config.session
     trail= sess.client('cloudtrail')
     s3= sess.client('s3')
-
+    s3r= sess.resource('s3')
+    bucketName= 'nabp-trail-bucket'+ ''.join(random.choice(string.digits) for i in range(8))
+    
+    while s3r.Bucket(bucketName) in s3r.buckets.all():
+        bucketName= 'nabp-trail-bucket'+ ''.join(random.choice(string.digits) for i in range(8))
+    
     #create s3 buckets to store trails
-
     trailbucket= s3.create_bucket(
-        Bucket='nabpTrailBucket'+ ''.join(random.choice(string.digits)),
+        Bucket= bucketName,
         CreateBucketConfiguration={
             'LocationConstraint': 'us-west-2'
         },
     )
     click.echo('trailbucket creado')
-    # enable cloudtrail all regions
+    
+    # create trail
+
 
     
 
