@@ -646,7 +646,7 @@ def monitor(config):
     """Comandos monitoreo"""
 
 @monitor.command('trail')
-@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+#@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
 @pass_config
 def trail(config):
     "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
