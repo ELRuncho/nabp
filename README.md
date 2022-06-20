@@ -272,6 +272,12 @@ Con nombre:
 
 `$ nabp core presupuesto --nombre miPresupuesto --monto 200 --email admin@empresa.com`
 
+## Comandos Monitor
+
+### trail
+
+Este comando crea un bucket y habilita cloudtrail para todas las regiones dentro de tu nueva cuenta
+
 ## Comandos Network
 
 ### crear
