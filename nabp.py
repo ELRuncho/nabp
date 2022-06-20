@@ -652,6 +652,7 @@ def monitor(config):
 def trail(config):
     "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
     sess= config.session
+    id = sess.client('sts').get_caller_identity()['Account']
     trail= sess.client('cloudtrail')
     s3= sess.client('s3')
     s3r= sess.resource('s3')
@@ -666,6 +667,44 @@ def trail(config):
         CreateBucketConfiguration={
             'LocationConstraint': 'us-west-2'
         },
+    )
+    # defines bucket policy for trail bucket
+    dict={
+            "Version": "2012-10-17",
+            "Statement": [
+                    {
+                        "Sid": "AWSCloudTrailAclCheck20150319",
+                        "Effect": "Allow",
+                        "Principal": {"Service": "cloudtrail.amazonaws.com"},
+                        "Action": "s3:GetBucketAcl",
+                        "Resource": "arn:aws:s3:::"+trailBucketName,
+                        "Condition": {
+                            "StringEquals": {
+                                "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/nabp-trail"
+                            }
+                        }
+                    },
+                    {
+                        "Sid": "AWSCloudTrailWrite20150319",
+                        "Effect": "Allow",
+                        "Principal": {"Service": "cloudtrail.amazonaws.com"},
+                        "Action": "s3:PutObject",
+                        "Resource": "arn:aws:s3:::"+trailBucketName+"/new-account-trail/AWSLogs/"+id+"/*",
+                        "Condition": {
+                                        "StringEquals": {
+                                            "s3:x-amz-acl": "bucket-owner-full-control",
+                                            "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/nabp-trail"
+                                        }
+                        }
+                    }
+                ]
+        }
+
+    bucketPolicy=json.dumps(dict)
+    
+    s3.put_bucket_policy(
+        Bucket=trailBucketName,
+        Policy= bucketPolicy
     )
     click.echo('trailbucket creado')
 
@@ -688,6 +727,8 @@ def trail(config):
             },
         ]
     )
+
+    click.echo("creado el trail")
 
 
     
