@@ -728,6 +728,10 @@ def trail(config):
         ]
     )
 
+    trail.start_logging(
+        Name= 'nabp-trail'
+    )
+
     click.echo("creado el trail")
 
 
