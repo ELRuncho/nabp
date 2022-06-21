@@ -278,6 +278,10 @@ Con nombre:
 
 Este comando crea un bucket para almacenar logs de cloudtrail y habilita cloudtrail para todas las regiones dentro de tu nueva cuenta.
 
+Este comando tiene las siguientes opciones:
+
+- `--nombre`: Esta opcion permite especificar el nombre de el trail a crearse en AWS CloudTrail
+
 **Ejemplo:**
 
 `$ nabp monitor trail`
