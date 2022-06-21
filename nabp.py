@@ -738,8 +738,8 @@ def trail(config):
     
 
 
-@monitor.command('configuracion')
-@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+@monitor.command('config')
+#@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
 @pass_config
 def configuracion(config):
     "Habilita aws config con reglas basicas para monitorear configuracion de recursos"

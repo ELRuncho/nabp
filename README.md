@@ -276,7 +276,13 @@ Con nombre:
 
 ### trail
 
-Este comando crea un bucket y habilita cloudtrail para todas las regiones dentro de tu nueva cuenta
+Este comando crea un bucket para almacenar logs de cloudtrail y habilita cloudtrail para todas las regiones dentro de tu nueva cuenta.
+
+**Ejemplo:**
+
+`$ nabp monitor trail`
+
+### config
 
 ## Comandos Network
 
