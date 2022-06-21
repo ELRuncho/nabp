@@ -647,9 +647,9 @@ def monitor(config):
     """Comandos monitoreo"""
 
 @monitor.command('trail')
-#@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+@click.option('--nombre', default= 'nabptrail', help= 'nombre de el trail')
 @pass_config
-def trail(config):
+def trail(config, nombre):
     "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
     sess= config.session
     id = sess.client('sts').get_caller_identity()['Account']
@@ -680,7 +680,7 @@ def trail(config):
                         "Resource": "arn:aws:s3:::"+trailBucketName,
                         "Condition": {
                             "StringEquals": {
-                                "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/nabp-trail"
+                                "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/"+nombre
                             }
                         }
                     },
@@ -693,7 +693,7 @@ def trail(config):
                         "Condition": {
                                         "StringEquals": {
                                             "s3:x-amz-acl": "bucket-owner-full-control",
-                                            "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/nabp-trail"
+                                            "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/"+nombre
                                         }
                         }
                     }
@@ -710,7 +710,7 @@ def trail(config):
 
     # create trail for all regions
     nabptrail= trail.create_trail(
-        Name='nabp-trail',
+        Name=nombre,
         S3BucketName=trailBucketName,
         S3KeyPrefix='new-account-trail',
         #SNSTopicName='',
@@ -729,7 +729,7 @@ def trail(config):
     )
 
     trail.start_logging(
-        Name= 'nabp-trail'
+        Name= nombre
     )
 
     click.echo("creado el trail")
