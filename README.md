@@ -280,11 +280,18 @@ Este comando crea un bucket para almacenar logs de cloudtrail y habilita cloudtr
 
 Este comando tiene las siguientes opciones:
 
-- `--nombre`: Esta opcion permite especificar el nombre de el trail a crearse en AWS CloudTrail
+- `--nombre`: Esta opcion permite especificar el nombre de el trail a crearse en AWS CloudTrail, el nombre default es *nabp-trail*
 
 **Ejemplo:**
 
+Sin opciones:
+
 `$ nabp monitor trail`
+
+Nombre custom para el trail:
+
+`$ nabp monitor trail --nombre mitrail `
+
 
 ### config
 
