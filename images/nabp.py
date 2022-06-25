@@ -43,7 +43,7 @@ def cli(config,profile):
 def core(config):
     """Comandos core"""
 
-# limitregions with aws:RequestedRegion ?
+
 @core.command('seguridad')
 @click.option('--analyzer_nombre', default='miAnalyzer', help="nombre del analyzer")
 @click.option('--nombre_admin_g', default='Administradores', help="nombre para el grupo de administradores")
@@ -745,10 +745,6 @@ def configuracion(config):
     "Habilita aws config con reglas basicas para monitorear configuracion de recursos"
     sess= config.session
     # alert on public s3 buckets
-     #s3-bucket-loggigng-enabled
-     #s3-bucket-public-read-prohibited
-     #s3-bucket-public-write-prohibited
-     #s3-bucket-ssl-requests-only
     # alert open SG
     # RDS instances open to internet
     # automation on config rules
