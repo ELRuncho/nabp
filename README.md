@@ -183,6 +183,16 @@ Cuando su cuenta se haya activado por completo, recibirá un email de confirmaci
         
         C:\> where /R c:\ <paquete aws o python/py>
 
+### No tienes un equipo Linux o tu computador tiene controles que te impiden instalar? 
+En este caso puedes hacer uso de *AWS CLOUDSHELL* para poder tener un ambiente de consola sin tener que desplegar recursos adicionales.
+
+Para usar CloudShell solo debes buscar el servicio en la consola:
+![](./images/cloudshellSearch.png)
+
+Una vez estes en CloudShell puedes configurar aws cli que ya viene instalado, asi como python
+
+![](./images/cloudshell.png)
+
 ### Instalacion
 
 1. Descarga nabp desde github ya sea descargando el zip o clonando el repositorio

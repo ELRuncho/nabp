@@ -44,6 +44,7 @@ def core(config):
     """Comandos core"""
 
 # limitregions with aws:RequestedRegion ?
+# request tags 
 @core.command('seguridad')
 @click.option('--analyzer_nombre', default='miAnalyzer', help="nombre del analyzer")
 @click.option('--nombre_admin_g', default='Administradores', help="nombre para el grupo de administradores")
