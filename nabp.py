@@ -745,7 +745,7 @@ def trail(config, nombre):
 def configuracion(config):
     "Habilita aws config con reglas basicas para monitorear configuracion de recursos"
     sess= config.session
-    awsconfig =  sess('config')
+    awsconfig =  sess.client('config')
     # alert on public s3 buckets
      #s3-bucket-public-read-prohibited
     awsconfig.put_config_rule(
