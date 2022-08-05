@@ -754,7 +754,7 @@ def configuracion(config):
             {
                 "Effect":"Allow",
                 "Principal":{
-                    "Service":"config.amazon.com"
+                    "Service":"config.amazonaws.com"
                 },
                 "Action": "sts:AssumeRole"
             }
