@@ -771,7 +771,7 @@ def configuracion(config):
     awsconfig.put_configuration_recorder(
         ConfigurationRecorder={
             'name': 'nabpRecorder',
-            'roleArn': config_role['Role']['Arn'],
+            'roleARN': config_role['Role']['Arn'],
             'recordingGroup':{
                 'allSupported': True,
                 'includeGlobalResourceTypes': True,
