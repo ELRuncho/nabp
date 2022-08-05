@@ -779,6 +779,10 @@ def configuracion(config):
         }
     )
 
+    awsconfig.start_configuration_recorder(
+        COnfigurationRecorderName='nabpRecorder'
+    )
+
     # alert on public s3 buckets
      #s3-bucket-public-read-prohibited
     awsconfig.put_config_rule(
