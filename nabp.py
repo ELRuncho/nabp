@@ -745,9 +745,27 @@ def trail(config, nombre):
 def configuracion(config):
     "Habilita aws config con reglas basicas para monitorear configuracion de recursos"
     sess= config.session
+    awsconfig =  sess('config')
     # alert on public s3 buckets
-     #s3-bucket-loggigng-enabled
      #s3-bucket-public-read-prohibited
+    awsconfig.put_config_rule(
+        ConfigRule={
+            'ConfigRuleName': 'S3PublicRead',
+            'Description':'S3 Public Read Prohibited Bucket Rule',
+            'Scope':{
+                'ComplianceResourceTypes':['AWS::S3::Bucket']
+            },
+            'Source':{
+                'Owner':'AWS',
+                'SourceIdentifier': 'S3_BUCKET_PUBLIC_READ_PROHIBITED'
+            },
+            'InputParameters': '{}',
+            'ConfigRuleState':'ACTIVE'
+
+        }
+    )
+
+     #s3-bucket-loggigng-enabled
      #s3-bucket-public-write-prohibited
      #s3-bucket-ssl-requests-only
     # alert open SG
