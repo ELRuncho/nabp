@@ -780,7 +780,7 @@ def configuracion(config):
     )
 
     awsconfig.start_configuration_recorder(
-        COnfigurationRecorderName='nabpRecorder'
+        ConfigurationRecorderName='nabpRecorder'
     )
 
     # alert on public s3 buckets
