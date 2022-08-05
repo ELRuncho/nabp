@@ -764,6 +764,22 @@ def configuracion(config):
 
         }
     )
+    awsconfig.put_config_rule(
+        ConfigRule={
+            'ConfigRuleName': 'S3logging',
+            'Description':'S3 Public Read Prohibited Bucket Rule',
+            'Scope':{
+                'ComplianceResourceTypes':['AWS::S3::Bucket']
+            },
+            'Source':{
+                'Owner':'AWS',
+                'SourceIdentifier': 'S3_BUCKET_LOGGING_ENABLED'
+            },
+            'InputParameters': '{}',
+            'ConfigRuleState':'ACTIVE'
+
+        }
+    )
 
      #s3-bucket-loggigng-enabled
      #s3-bucket-public-write-prohibited
