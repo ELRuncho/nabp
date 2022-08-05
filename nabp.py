@@ -743,9 +743,42 @@ def trail(config, nombre):
 #@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
 @pass_config
 def configuracion(config):
-    "Habilita aws config con reglas basicas para monitorear configuracion de recursos"
+    "Habilita aws config para todos los recursos y crea reglas basicas para monitorear configuracion de recursos comunes como s3"
     sess= config.session
+    iam = sess.client('iam')
     awsconfig =  sess.client('config')
+
+    asume_policy = json.dumps({
+        "Version":"2012-10-17",
+        "Statement": [
+            {
+                "Effect":"Allow",
+                "Principal":{
+                    "Service":"config.amazon.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    })
+
+    config_role=iam.create_role(
+        RoleName='nabp_config_role',
+        AssumeRolePolicyDocument=asume_policy,
+    )
+
+    iam.attach_role_policy(RoleName='nabp_config_role',PolicyArn='arn:aws:iam::aws:policy/service-role/AWSConfigRole')
+
+    awsconfig.put_configuration_recorder(
+        ConfigurationRecorder={
+            'name': 'nabpRecorder',
+            'roleArn': config_role['Role']['Arn'],
+            'recordingGroup':{
+                'allSupported': True,
+                'includeGlobalResourceTypes': True,
+            }
+        }
+    )
+
     # alert on public s3 buckets
      #s3-bucket-public-read-prohibited
     awsconfig.put_config_rule(
