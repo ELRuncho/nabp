@@ -41,76 +41,76 @@ def cli(config,profile):
 @cli.group('core')
 @pass_config
 def core(config):
-    """Comandos core"""
+    """Core Comands"""
 
 # limitregions with aws:RequestedRegion ?
 # request tags 
-@core.command('seguridad')
-@click.option('--analyzer_nombre', default='miAnalyzer', help="nombre del analyzer")
-@click.option('--nombre_admin_g', default='Administradores', help="nombre para el grupo de administradores")
-@click.option('--nombre_dev_g', default='Developers', help="nombre para el grupo de desarrolladores")
-@click.option('--nombre_audit_g', default='Auditores', help="nombre para el grupo de auditores")
-@click.option('--nombre_fin_g', default='Finanzas', help="nombre para el grupo de finanzas")
+@core.command('security')
+@click.option('--analyzer_name', default='myAnalyzer', help="name for the iam analyzer")
+@click.option('--admin_g_name', default='Administrators', help="name for the administrator group")
+@click.option('--dev_g_name', default='Developers', help="name for the developer group")
+@click.option('--audit_g_name', default='Auditors', help="name for the auditors group")
+@click.option('--fin_g_name', default='Finance', help="name for the finance group")
 @pass_config
-def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,nombre_fin_g):
-    "Desplega medidas de seguridad core. Access analizer, 4 grupos IAM, y usuarios base de esos grupos"
+def coresec(config, analyzer_name,admin_g_name,dev_g_name,audit_g_name,fin_g_name):
+    "Deploys core security: Access analizer, 4 IAM groups and one IAM user for each group"
     sess = config.session
     
     analyzerclient = sess.client('accessanalyzer')
 
     iamclient = sess.client('iam')
 
-    click.echo('creando analyzer')
+    click.echo('Creating analyzer')
 
     try:
         analyzerclient.create_analyzer(
-                                    analyzerName= analyzer_nombre,
+                                    analyzerName= analyzer_name,
                                     type= 'ACCOUNT'
                                    )
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('Ya existe un analyzer con el nombre especificado... continuando')
+            click.echo('An analyzer with the specified name already exist... carrying on')
         else:
-            print('Error inesperado al crear el analyzer... saliendo')
+            print('Unexpected error creating the analyzer... exiting')
             pass
 
-    click.echo('creado analyzer')
+    click.echo('Analyzer Created')
 
     try:
-        admingroup= iamclient.create_group(GroupName= nombre_admin_g)
+        admingroup= iamclient.create_group(GroupName= admin_g_name)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El groupo Administradores ya existe....usare el grupo existente')
+            click.echo('The administrator group already exist.... Ill use the existing group')
         else:
-            print('Error inesperado al crear el grupo.. saliendo', error)
-            return 'No se pudo crear el grupo', error
+            print('Unexpected Error creating the administrator group.. exiting ', error)
+            return 'The group could not be created ', error
 
     try:
-        devgroup= iamclient.create_group(GroupName= nombre_dev_g)    
+        devgroup= iamclient.create_group(GroupName= dev_g_name)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El groupo Developers ya existe....usare el grupo existente')
+            click.echo('The Developers group already exist.... Ill use the existing group')
         else:
-            print('Error inesperado al crear el grupo.. saliendo', error)
-            return 'No se pudo crear el grupo', error
+            print('Unexpected Error creating the developers group.. exiting ', error)
+            return 'The group could not be created ', error
 
     try:
-        auditgroup= iamclient.create_group(GroupName= nombre_audit_g)
+        auditgroup= iamclient.create_group(GroupName= audit_g_name)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El groupo Auditores ya existe....usare el grupo existente')
+            click.echo('The Auditors group already exist.... Ill use the existing group')
         else:
-            print('Error inesperado al crear el grupo.. saliendo', error)
-            return 'No se pudo crear el grupo', error
+            print('Unexpected Error creating the auditors group.. exiting ', error)
+            return 'The group could not be created ', error
 
     try:
-        fingroup= iamclient.create_group(GroupName= nombre_fin_g)    
+        fingroup= iamclient.create_group(GroupName= fin_g_name)    
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El groupo Finanzas ya existe....usare el grupo existente')
+            click.echo('The Finance group already exist.... Ill use the existing group')
         else:
-            print('Error inesperado al crear el grupo.. saliendo', error)
-            return 'No se pudo crear el grupo', error
+            print('Unexpected Error creating the auditors group.. exiting ', error)
+            return 'The group could not be created ', error
     
     iamclient.attach_group_policy(
                                     GroupName=admingroup['Group']['GroupName'],
@@ -132,47 +132,47 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
                                     PolicyArn='arn:aws:iam::aws:policy/PowerUserAccess'
                                 )
 
-    click.echo('Grupos y politicas creadas')
+    click.echo('Groups and policies created')
 
     try:
         admin1= iamclient.create_user(UserName='Admin1',)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El usuario Admin1 ya existe')
-            return 'el usuario ya existe'
+            click.echo('The user Admin1 already exists')
+            return 'The user already exists'
         else:
-            click.echo('Error inesperado al crear el usuario', error)
-            return 'no se pudo crear el usuario', error
+            click.echo('Unexpected Error creating Admin1 user ', error)
+            return 'The user could not be created ', error
     
     try:
         dev1= iamclient.create_user(UserName='dev1',)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El usuario dev1 ya existe')
-            return 'el usuario ya existe'
+            click.echo('The user dev1 already exists')
+            return 'The user already exists'
         else:
-            click.echo('Error inesperado al crear el usuario', error)
-            return 'no se pudo crear el usuario', error 
+            click.echo('Unexpected Error creating dev1 user ', error)
+            return 'The user could not be created ', error 
 
     try:
         aud1= iamclient.create_user(UserName='aud1',)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El usuario aud1 ya existe')
-            return 'el usuario ya existe'
+            click.echo('The user aud1 already exists ')
+            return 'The user already exists'
         else:
-            click.echo('Error inesperado al crear el usuario', error)
-            return 'no se pudo crear el usuario', error
+            click.echo('Unexpected Error creating aud1 user ', error)
+            return 'The user could not be created ', error
 
     try:
         fin1= iamclient.create_user(UserName='fin1',)
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('El usuario fin1 ya existe')
-            return 'el usuario ya existe'
+            click.echo('The user fin1 already exists ')
+            return 'The user already exists'
         else:
-            click.echo('Error inesperado al crear el usuario', error)
-            return 'no se pudo crear el usuario', error
+            click.echo('Unexpected Error creating fin1 user ', error)
+            return 'The user could not be created ', error
 
     iamclient.add_user_to_group(
                                 GroupName=admingroup['Group']['GroupName'],
@@ -227,12 +227,12 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         )
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('el perfil de login de admin1 ya existe')
+            click.echo('The login profile of admin1 already exists')
         else:
-            print('error inesperado...saliendo', error)
-            return 'perfil de login no se pudo crear', error
+            print('Unexpected error...exiting ', error)
+            return 'The login profile could not be created ', error
 
-    click.echo('El usuario {0} se creo con password temporal: {1}'.format(admin1['User']['UserName'],adminpwd))
+    click.echo('The user {0} has been created with temporary password: {1}'.format(admin1['User']['UserName'],adminpwd))
 
     try:
         dev1login=iamclient.create_login_profile(
@@ -242,12 +242,12 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         )
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('el perfil de login de dev1 ya existe')
+            click.echo('The login profile of dev1 already exists')
         else:
-            print('error inesperado...saliendo', error)
-            return 'perfil de login no se pudo crear', error
+            print('Unexpected error...exiting ', error)
+            return 'The login profile could not be created ', error
 
-    click.echo('El usuario {0} se creo con password temporal: {1}'.format(dev1['User']['UserName'],devpwd))
+    click.echo('The user {0} has been created with temporary password: {1}'.format(dev1['User']['UserName'],devpwd))
 
     try:
         aud1login=iamclient.create_login_profile(
@@ -257,12 +257,12 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         )
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('el perfil de login de aud1 ya existe')
+            click.echo('The login profile of aud1 already exists')
         else:
-            print('error inesperado...saliendo', error)
-            return 'perfil de login no se pudo crear', error
+            print('Unexpected error...exiting ', error)
+            return 'The login profile could not be created ', error
 
-    click.echo('El usuario {0} se creo con password temporal: {1}'.format(aud1['User']['UserName'],audpwd))
+    click.echo('The user {0} has been created with temporary password: {1}'.format(aud1['User']['UserName'],audpwd))
 
     try:
         fin1login=iamclient.create_login_profile(
@@ -272,12 +272,12 @@ def coresec(config, analyzer_nombre,nombre_admin_g,nombre_dev_g,nombre_audit_g,n
         )
     except ClientError as error:
         if error.response['Error']['Code']=='EntityAlreadyExist':
-            click.echo('el perfil de login de fin1 ya existe')
+            click.echo('The login profile of fin1 already exists')
         else:
-            print('error inesperado...saliendo', error)
-            return 'perfil de login no se pudo crear', error
+            print('Unexpected error...exiting ', error)
+            return 'The login profile could not be created ', error
 
-    click.echo('El usuario {0} se creo con password temporal: {1}'.format(fin1['User']['UserName'],finpwd))
+    click.echo('The user {0} has been created with temporary password: {1}'.format(fin1['User']['UserName'],finpwd))
 
 
 
