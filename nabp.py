@@ -743,7 +743,7 @@ def trail(config, name):
 #@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
 @pass_config
 def configuracion(config):
-    "Habilita aws config para todos los recursos y crea reglas basicas para monitorear configuracion de recursos comunes como s3"
+    "Enables AWS Config for all resources and creates basic rules to monitor comon resources such as s3"
     sess= config.session
     iam = sess.client('iam')
     awsconfig =  sess.client('config')
