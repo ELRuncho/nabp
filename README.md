@@ -1,217 +1,217 @@
-<h1 align="center">NABP Linea de comandos</h1>
-<h3 align="center">Mejores practicas para una nueva cuenta de AWS</h3>
+<h1 align="center">NABP Command line</h1>
+<h3 align="center">Best Practices for a new AWS Account</h3>
 
 ## Tabla de Contenido
 
-- 🔭 [Como crear una nueva cuenta](https://github.com/ELRuncho/nabp#como-crear-una-nueva-cuenta)
+- 🔭 [How to create a new account](https://github.com/ELRuncho/nabp#como-crear-una-nueva-cuenta)
 
-- 👤 [Crear usuario administrador](https://github.com/ELRuncho/nabp#crear-usuario-administrador)
+- 👤 [Create new administrator user](https://github.com/ELRuncho/nabp#crear-usuario-administrador)
 
-- 🚀 [Como instalar nabp](https://github.com/ELRuncho/nabp#como-instalar-nabp)
+- 🚀 [How to install nabp](https://github.com/ELRuncho/nabp#como-instalar-nabp)
 
-- 👯 [Comandos core](https://github.com/ELRuncho/nabp#comandos-core)
+- 👯 [Core Commands](https://github.com/ELRuncho/nabp#comandos-core)
 
-- :eye: [Comandos Monitor](https://github.com/ELRuncho/nabp#comandos-monitor)
+- :eye: [Monitor Commands](https://github.com/ELRuncho/nabp#comandos-monitor)
 
-- 🤝 [Comandos Network](https://github.com/ELRuncho/nabp#comandos-network)
+- 🤝 [Network Commands](https://github.com/ELRuncho/nabp#comandos-network)
 
 
-## Como crear una nueva cuenta
-1. Abra la [página de inicio de Amazon Web Services (AWS)](https://aws.amazon.com/).
+## How to create a new account
+1. Access the [Amazon Web Services (AWS) home page](https://aws.amazon.com/).
     ![](./images/awshome.png)
-2. Elija Create an AWS Account (Crear una cuenta de AWS).
-    **Nota:** Si ha iniciado sesión en AWS recientemente, elija Iniciar sesión en la consola. Si Create a new AWS account (Crear una nueva cuenta de AWS) no es visible, elija primero Sign in to a different account (Iniciar sesión con una cuenta diferente) y, a continuación, Create a new AWS account (Crear una nueva cuenta de AWS).
+2. Click on Create an AWS Account.
+    **Note:** If you've recently signed in to AWS, choose Sign in to the console. If Create a new AWS account isn't visible, first choose Sign in to a different account and then Create a new AWS account.
     ![](./images/email.png)
-3. En Root user email address (Email del usuario raíz), escriba su email, edite el nombre de la cuenta de AWS y, a continuación, elija Verify email address (Verificar email). Se enviará un email de verificación de AWS a esta dirección con un código de verificación.
+3. For Root user email address, type your email, edit your AWS account name, and then choose Verify email address. A verification email from AWS will be sent to this address with a verification code.
 
-    **Consejo:** En el caso de la dirección de email del usuario raíz, utilice un buzón o una lista de distribución de email de empresa (por ejemplo, administradores.empresa@ejemplo.com) si su cuenta es una cuenta de AWS profesional. Evite utilizar el email de empresa de una persona (por ejemplo, paulo.santos@ejemplo.com). De este modo, su empresa seguirá teniendo acceso a la cuenta de AWS incluso si un empleado cambia de puesto o deja la empresa. La dirección de email se puede utilizar para restablecer las credenciales de la cuenta. Asegúrese de proteger el acceso a estas listas de distribución. No utilice el inicio de sesión del usuario raíz de la cuenta de AWS para sus tareas cotidianas. Es una práctica recomendada habilitar la autenticación multifactor (MFA) en la cuenta raíz para proteger los recursos de AWS.
+    **Advice:** For the root user email address, use a company email mailbox or distribution list (for example, admins.company@example.com) if your account is a professional AWS account. Avoid using a person's company email (for example, paulo.santos@example.com). This way, your company will continue to have access to the AWS account even if an employee changes jobs or leaves the company. The email address can be used to reset account credentials. Be sure to protect access to these distribution lists. Don't use the AWS account root user login for your day-to-day tasks. It's a best practice to enable multi-factor authentication (MFA) on the root account to protect AWS resources.
 
-    **Consejo:** En el caso del Nombre de la cuenta de AWS, utilice un estándar de denominación de cuentas que permita que el nombre de la cuenta sea reconocible en la factura o en la consola de administración de facturación y costos. Si se trata de una cuenta de empresa, considere utilizar el estándar de denominación organización-objetivo-entorno (por ejemplo, EmpresaEjemplo-auditoría-prod). En caso de que sea una cuenta personal, plantéese utilizar el estándar de denominación nombre-apellido-objetivo (por ejemplo, paulo-santos-cuentadeprueba). Puede cambiar el nombre de la cuenta en la configuración de la cuenta después de registrarse. Para obtener más información, consulte ¿Cómo cambio el nombre en mi cuenta de AWS?
+    **Advice:** For the AWS Account Name, use an account naming standard that allows the account name to be recognizable on the bill or in the billing and cost management console. If this is an enterprise account, consider using the organization-target-environment naming standard (for example, ExampleCompany-audit-prod). If this is a personal account, consider using the firstname-lastname-target naming standard (for example, paulo-santos-testaccount). You can change the account name in the account settings after registration. For more information, see How do I change the name in my AWS account?
 
-### Verifique su email
+### Verify your email
 
-Ingrese el código que reciba y, a continuación, seleccione Verify (Verificar). El código puede tardar unos minutos en llegar. Compruebe su email y la carpeta de spam para el email de código de verificación.
+Enter the code you receive, then select Verify. The code may take a few minutes to arrive. Check your email and spam folder for the verification code email.
 
 ![](./images/emailcode.png)
 
 
-### Cree su contraseña
+### Create your password
 
-Ingrese su contraseña de usuario raíz, confirme la contraseña de usuario raíz y, a continuación, seleccione Continue (Continuar).
+Enter your root user password, confirm the root user password, and then select Continue.
 
 ![](./images/password.png)
 
-### Agregue su información de contacto
+### Add your contact information
 
-1. Seleccione Personal (Personal) o Business (Empresa).
-    **Nota:** Las cuentas personales y empresariales tienen las mismas características y funciones.
-2. Ingrese su información personal o empresarial.
-    **Importante:** Para cuentas de AWS empresariales, se recomienda ingresar el número de teléfono de la empresa en lugar de un número de teléfono móvil personal. Configurar una cuenta raíz con una dirección de email o un número de teléfono personales puede provocar que la cuenta no sea segura.
-3. Lea y acepte el Contrato de usuario de AWS.
-4. Elija **Continuar**.
+1. Select Personal or Business.
+    **Note:** Personal and business accounts have the same features and functions.
+2. Enter your personal or business information.
+    **Important:** For enterprise AWS accounts, we recommend that you enter your business phone number instead of a personal mobile phone number. Setting up a root account with a personal email address or phone number can make the account insecure.
+3. Read and agree to the AWS User Agreement.
+4. Click **Continue**.
 
 ![](./images/info.png)
 
-Recibirá un email para confirmar que se ha creado su cuenta. Puede iniciar sesión en su nueva cuenta con la dirección de email y la contraseña que utilizó para registrarse. No obstante, no podrá utilizar los servicios de AWS hasta que termine de activar la cuenta.
+You will receive an email to confirm that your account has been created. You can sign in to your new account with the email address and password you used to sign up. However, you will not be able to use AWS services until you finish activating your account.
 
-### Agregue un método de pago
+### Add a payment method
 
-En la página **Información de facturación**, ingrese la información de su método de pago y, a continuación, elija Verify and Add (Verificar y agregar).
+On the **Billing Information** page, enter your payment method information, then choose Verify and Add.
 
-Si se está registrando en la India para obtener una cuenta de Amazon Internet Services Private Limited (AISPL), debe proporcionar su CVV como parte del proceso de verificación. Asimismo, es posible que tenga que ingresar una contraseña de un solo uso, en función del banco. AISPL realizará un cargo de 2 rupias indias (INR) en el método de pago como parte del proceso de verificación. AISPL reembolsará las 2 INR una vez que se complete la verificación.
+If you are registering in India for an Amazon Internet Services Private Limited (AISPL) account, you must provide your CVV as part of the verification process. You may also need to enter a one-time password, depending on the bank. AISPL will charge 2 Indian Rupees (INR) to the payment method as part of the verification process. AISPL will refund the 2 INR once verification is complete.
 
-Si desea utilizar una dirección de facturación diferente para la información de facturación de AWS, elija **Use a new address** (Utilizar una nueva dirección). A continuación, elija **Verify and Continue** (Verificar y continuar).
+If you want to use a different billing address for your AWS billing information, choose **Use a new address**. Then choose **Verify and Continue**.
 
-**Importante:** No puede continuar con el proceso de registro mientras no agregue un método de pago válido.
+**Important:** You cannot proceed with the registration process until you add a valid payment method.
 
 ![](./images/creditcard.png)
 
-### Verifique su número de teléfono
+### Verify your phone number
 
-1. En la página Confirme su identidad, seleccione un método de contacto para recibir un código de verificación.
+1. On the Confirm Your Identity page, select a contact method to receive a verification code.
     ![](./images/phone.png)
-2. Seleccione el país o código de región de su número de teléfono en la lista.
-3. Ingrese un número de teléfono móvil en el que se le pueda contactar durante los próximos minutos.
-4. Si aparece un CAPTCHA, ingrese el código mostrado y luego envíelo.
-5. Transcurridos unos instantes, un sistema automatizado le contactará.
-6. Escriba el PIN recibido y luego elija **Continuar**.
+2. Select the country or region code of your phone number from the list.
+3. Please enter a mobile phone number where you can be reached within the next few minutes.
+4. If a CAPTCHA appears, enter the code shown and then submit it.
+5. After a few moments, an automated system will contact you.
+6. Enter the received PIN and then choose **Continue**.
     ![](./images/phonecode.png)
 
-### Elija un plan de AWS Support
+### Choose an AWS Support Plan
 
-En la página Seleccione un plan de soporte, elija uno de los planes de soporte disponibles. Para ver la descripción de los planes de soporte disponibles y sus beneficios, consulte Compare los planes de AWS Support.
+On the Select a support plan page, choose one of the available support plans. For a description of available support plans and their benefits, see Compare AWS Support Plans.
 
-Elija Finalizar inscripción.
+Click Finish Enrollment.
 
 ![](./images/support.png)
 
-### Espere a que se active la cuenta
+### Wait for the account to be activated
 
-Después de elegir un plan de Support, una página de confirmación le indica que su cuenta está siendo activada. Por lo general, las cuentas se activan en unos pocos minutos, aunque el proceso puede tardar hasta 24 horas.
+After choosing a Support plan, a confirmation page tells you that your account is being activated. Accounts are usually activated within a few minutes, although the process can take up to 24 hours.
 
 ![](./images/complete.png)
 
-Puede iniciar sesión en su cuenta de AWS durante ese tiempo. La página de inicio de AWS puede mostrar el botón **Completar el inicio de sesión** durante ese plazo de tiempo, incluso si ya ha completado todos los pasos del proceso de inicio de sesión.
+You can sign in to your AWS account during that time. The AWS home page may display a **Complete Sign In** button during that time, even if you've already completed all steps of the sign-in process.
 
-Cuando su cuenta se haya activado por completo, recibirá un email de confirmación. Compruebe su email y la carpeta de spam para encontrar el email de confirmación. Después de recibir este email, tendrá acceso completo a todos los servicios de AWS.
+When your account has been fully activated, you will receive a confirmation email. Check your email and spam folder to find the confirmation email. After receiving this email, you will have full access to all AWS services.
 
-## Crear usuario administrador
+## Create admin user
 
-### Para crear uno o varios usuarios de IAM (consola)
+### To create one or more IAM users (console)
 
-1. Inicie sesión en la AWS Management Console y abra la consola de IAM en [link](https://console.aws.amazon.com/iam/)
+1. Sign in to the AWS Management Console and open the IAM console at [link](https://console.aws.amazon.com/iam/)
     ![](./images/slectIAM.png)
-2. En el panel de navegación, elija Usuarios y, a continuación, elija Agregar usuarios.
+2. In the navigation pane, choose Users, and then choose Add Users.
     ![](./images/users.png)
-3. Escriba el nombre de usuario del nuevo usuario. Este es el nombre de inicio de sesión para AWS. Si quiere agregar varios usuarios, seleccione Add another user (Agregar otro usuario) para cada usuario adicional y escriba sus nombres de usuario. Puede añadir hasta 10 usuarios al mismo tiempo.
+3. Type the username of the new user. This is the login name for AWS. If you want to add multiple users, select Add another user for each additional user and enter their usernames. You can add up to 10 users at the same time.
     ![](./images/userdata.png)
-4. Seleccione el tipo de acceso que tendrá este conjunto de usuarios. Puede seleccionar el acceso mediante programación, el acceso a la AWS Management Console, o ambos.
+4. Select the type of access that this set of users will have. You can select programmatic access, access to the AWS Management Console, or both.
 
-    * Seleccione **Acceso mediante programación** si los usuarios necesitan obtener acceso a la API, la AWS CLI o Tools for Windows PowerShell. Esto crea una clave de acceso para cada usuario nuevo. Puede ver o descargar las claves de acceso cuando llegue a la página Final.
+    * Select **Programmatic access** if users need access to the API, AWS CLI, or Tools for Windows PowerShell. This creates a password for each new user. You can view or download the access keys when you reach the Finish page.
 
-    * Seleccione **AWS Management Console access** (acceso a la consola) si los usuarios necesitan obtener acceso a la AWS Management Console. Esto crea una contraseña para cada usuario nuevo.
+    * Select **AWS Management Console access** if users need access to the AWS Management Console. This creates a password for each new user.
 
-    - En **Console password (Contraseña de la consola)**, elija una de las opciones siguientes:
+    - For **Console password**, choose one of the following options:
 
-        - **Autogenerated password (Contraseña generada automáticamente)**. Cada usuario obtiene una contraseña generada de forma aleatoria que cumple la política de contraseñas de cuentas. Puede ver o descargar las contraseñas cuando llegue a la página Final.
+        - **Autogenerated password**. Each user gets a randomly generated password that complies with the account password policy. You can view or download the passwords when you get to the Finish page.
 
-        - **Custom password (Contraseña personalizada)**. A cada usuario se le asigna la contraseña que se escribe en el cuadro.
+        - **Custom password**. Each user is assigned the password that is typed in the box.
 
-    - (Opcional) Le recomendamos que seleccione **Require password reset (Requerir restablecimiento de contraseña)** para asegurarse de que los usuarios estén obligados a cambiar su contraseña la primera vez que inicien sesión.
+    - (Optional) We recommend that you select **Require password reset** to ensure that users are required to change their password the first time they log in.
 
 
-5. Elija Next: Permissions (Siguiente: Permisos).
+5. Choose Next: Permissions.
 
-6. En la página Set permissions (Establecer permisos), especifique la forma en que quiera asignar permisos a este conjunto de nuevos usuarios. Elija una de las siguientes tres opciones:
+6. On the Set permissions page, specify how you want to assign permissions to this set of new users. Choose one of the following three options:
     
     ![](./images/policy.png)
 
-    - **Add user to group (Añadir un usuario al grupo)**. Elija esta opción si desea asignar los usuarios a uno o a varios grupos que ya tienen políticas de permisos. IAM muestra una lista de los grupos de la cuenta, junto con sus políticas asociadas. Puede seleccionar uno o varios grupos existentes o elegir Create group (Crear grupo) para crear un grupo nuevo. Para obtener más información, consulte Cambio de los permisos de un usuario de IAM.
+    - **Add user to group**. Choose this option if you want to assign users to one or more groups that already have permission policies. IAM displays a list of the account's groups, along with their associated policies. You can select one or more existing groups or choose Create group to create a new group. For more information, see Changing an IAM User's Permissions.
 
-    - **Copy permissions from existing user (Copiar permisos de un usuario existente)**. Elija esta opción para copiar todas las suscripciones a grupos, las políticas administradas asociadas, las políticas insertadas integradas y los límites de permisos de un usuario existente en los usuarios nuevos. IAM muestra una lista de los usuarios de la cuenta. Seleccione el usuario cuyos permisos se acerquen lo máximo posible a las necesidades de los usuarios nuevos.
+    - **Copy permissions from existing user**. Choose this option to copy all group memberships, associated managed policies, built-in inline policies, and permission limits from an existing user to new users. IAM displays a list of users in the account. Select the user whose permissions are as close as possible to the needs of the new users.
 
-    - **Attach existing policies directly (Asociar las políticas existentes directamente)**. Elija esta opción para ver una lista de las políticas administradas por AWS y de las políticas administradas por el cliente de la cuenta. Seleccione las políticas que desea asociar a los nuevos usuarios o elija Create policy (Crear política) para abrir una nueva pestaña del navegador y crear una nueva política desde cero. Para obtener más información, consulte el paso 4 del procedimiento Crear políticas de IAM. Una vez creada la política, cierre la pestaña y vuelva a la pestaña original para añadir la política al nuevo usuario. Como práctica recomendada, es conveniente que primero asocie sus políticas a un grupo y después haga a los usuarios miembros de los grupos adecuados.
+    - **Attach existing policies directly**. Choose this option to see a list of AWS managed policies and customer managed policies for the account. Select the policies you want to associate with new users, or choose Create policy to open a new browser tab and create a new policy from scratch. For more information, see step 4 of the Create IAM Policies procedure. After the policy is created, close the tab and return to the original tab to add the policy to the new user. As a best practice, you might want to first associate your policies with a group, and then make users members of the appropriate groups.
 
-7. (Opcional) Configure un límite de permisos. Esta es una característica avanzada.
+7. (Optional) Set a permission boundry. This is an advanced feature.
 
-    Abra la sección **Set permissions boundary (Configurar límite de permisos)** y elija **Utilice a permissions boundary to control the maximum user permissions (Utilizar un límite de permisos para controlar los permisos que puede tener el usuario como máximo)**. IAM muestra una lista de las políticas administradas por AWS y de las políticas administradas por el cliente de la cuenta. Seleccione la política que desea usar para el límite de permisos o elija **Create policy (Crear política)** para abrir una pestaña nueva del navegador y crear una política nueva desde cero. Para obtener más información, consulte el paso 4 del procedimiento Crear políticas de IAM. Una vez creada la política, cierre la pestaña y vuelva a la pestaña original para seleccionar la política que va a usar para el límite de permisos.
+    Open the **Set permissions boundary** section and choose **Use a permissions boundary to control the maximum user permissions** . IAM displays a list of AWS managed policies and customer managed policies for the account. Select the policy you want to use for the permission limit, or choose **Create policy** to open a new browser tab and create a new policy from scratch. For more information, see step 4 of the Create IAM Policies procedure. Once the policy is created, close the tab and return to the original tab to select the policy to use for the permission limit.
 
-8. Elija Next: Tags (Siguiente: Etiquetas).
+8. Choose Next: Tags.
 
-9. (Opcional) Añadir metadatos al rol asociando las etiquetas como pares de clave-valor. Para obtener más información acerca del uso de etiquetas en IAM, consulte Etiquetado de recursos de IAM.
+9. (Optional) Add metadata to the role by associating the tags as key-value pairs. For more information about using tags in IAM, see IAM Resource Tagging.
     ![](./images/tags.png)
 
-10. Elija **Next: Review (Siguiente. Revisar)** para ver todas las opciones que ha realizado hasta este punto. Cuando esté listo para continuar, elija Create user **(Crear usuario)**.
+10. Choose **Next: Review** to see all the options you have made up to this point. When you're ready to continue, choose Create user **(Create user)**.
     ![](./images/review.png)
 
-11. Para ver las claves de acceso de los usuarios (los ID de las claves de acceso y las claves de acceso secretas), elija **Show (Mostrar)** junto a cada contraseña y clave de acceso secreta que desee ver. Para guardar las claves de acceso, elija **Download .csv (Descargar archivo .csv)** y, a continuación, guarde el archivo en un lugar seguro. 
+11. To view user access keys (Access Key IDs and Secret Access Keys), choose **Show** next to each password and secret access key you want to view. To save the access keys, choose **Download .csv**, and then save the file in a safe place. 
 
     ![](./images/downloadkeys.png)
 
-    **importante:**
-        Esta es la única oportunidad que tiene para ver o descargar las claves de acceso secretas, y debe proporcionar dicha información a los usuarios para que puedan usar la API de AWS. Guarde el nuevo ID de clave de acceso del usuario y la clave de acceso secreta en un lugar seguro. No volverá a tener acceso a la clave de acceso secreta después de este paso.
+    **important:**
+        This is the only opportunity you have to view or download your secret access keys, and you must provide this information to your users before they can use the AWS API. Keep the new User Access Key ID and Secret Access Key in a safe place. You will no longer have access to the secret access key after this step.
 
     ![](./images/final.png)
 
-12. Proporcione a cada usuario sus credenciales. En la página final puede elegir Send email (Enviar correo electrónico) junto a cada usuario. Su cliente de correo local se abrirá con un borrador que puede personalizar y enviar. La plantilla de correo electrónico contiene los detalles siguientes por cada usuario:
+12. Provide each user with their credentials. On the final page you can choose Send email next to each user. Your local mail client will open with a draft that you can customize and send. The email template contains the following details for each user:
 
-    - Nombre de usuario
+    - Username
 
-    - URL de la página de inicio de sesión de la cuenta. Utilice el ejemplo siguiente y realice la sustitución con el número de ID o de alias de cuenta correcto:
+    - Account login page URL. Use the following example and replace with the correct account alias or ID number:
 
         `https://AWS-account-ID or alias.signin.aws.amazon.com/console`
 
-    Para obtener más información, consulte [Cómo inician sesión los usuarios de IAM en AWS.](https://docs.aws.amazon.com/es_es/IAM/latest/UserGuide/id_users_sign-in.html) 
+    For more information, see [How IAM users sign in to AWS.](https://docs.aws.amazon.com/es_es/IAM/latest/UserGuide/id_users_sign-in.html) 
 
-## Como instalar nabp
+## How to install nabp
 
-### Prerequisitos
+### Prerequisites
 
-1. Python3 o superior y pip [Python](https://www.python.org/downloads/)
+1. Python3 or superior y pip [Python](https://www.python.org/downloads/)
 2. AWS CLI [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-    - Al instalar la linea de comandos,usando el comando `aws configure`, usa las llaves obtenidas del usuario admin creado anteriormente. 
+    - When installing the command line, using the command `aws configure`, uses the keys obtained from the admin user created earlier.
         ```
             $ aws configure
             AWS Access Key ID: <Access key del usario>
             AWS Secret Access Key: <Access key del usario>
             Default region name: us-east-1 <us-east-1 es la region por defecto>
         ```
-**Importante:**
-    En Windows, si python o el AWS cli, una vez instalados no se encuentran desde el command prompt se deben agregar a la variable de ambiente PATH.
-    Para encontrar el folder que contiene el awscli o python puede usar el comando `where`:
+**Important:**
+    On Windows, if python or the AWS cli, once installed, are not found from the command prompt, they must be added to the PATH environment variable.
+    To find the folder containing the awscli or python you can use the command `where`:
 
         
         C:\> where /R c:\ <paquete aws o python/py>
 
-### No tienes un equipo Linux o tu computador tiene controles que te impiden instalar? 
-En este caso puedes hacer uso de *AWS CLOUDSHELL* para poder tener un ambiente de consola sin tener que desplegar recursos adicionales.
+### You don't have a Linux computer or your computer has controls that prevent you from installing? 
+In this case you can make use of *AWS CLOUDSHELL* to be able to have a console environment without having to deploy additional resources.
 
-Para usar CloudShell solo debes buscar el servicio en la consola:
+To use CloudShell you just have to search for the service in the console:
 ![](./images/cloudshellSearch.png)
 
-Una vez estes en CloudShell puedes configurar aws cli que ya viene instalado, asi como python
+Once you are in CloudShell you can configure aws cli that is already installed, as well as python
 
 ![](./images/cloudshell.png)
 
-### Instalacion
+### Instalation
 
-1. Descarga nabp desde github ya sea descargando el zip o clonando el repositorio
+1. Download nabp from github either by downloading the zip or by cloning the repository
 
     `$ git clone https://github.com/ELRuncho/nabp.git`
 
-2. Ingresa al folder:
+2. Enter the folder:
 
     `$ cd nabp`
 
-3. Instala nabp usando pip:
+3. Install nabp using pip:
 
     `$ pip3 install .`
 
-4. Confirma la instalacion:
+4. Confirm the installation:
 
     `$ nabp --help`
 
-    - Si se instalo exitosamente deberias ver el siguiente output:
+    - If it installed successfully you should see the following output:
         ```
             Usage: nabp [OPTIONS] COMMAND [ARGS]...
 
@@ -223,108 +223,108 @@ Una vez estes en CloudShell puedes configurar aws cli que ya viene instalado, as
                 core     Comandos core
                 network  Comandos networking
         ```
-5. (OPTIONAL) una vez instalado napb puedes definir el perfil del awscli para usar con nabp usando la opcion `--profile`
+5. (OPTIONAL) once napb is installed you can define the awscli profile to use with nabp using the option`--profile`
 
     `$ nabp --profile <nombre perfil awslcli>`
 
-    Si no se define ningun perfil con la opcion `--profile` nabp usa el perfil default de awscli
+    If no profile is defined with the option `--profile` nabp uses the awscli default profile
 
-## Comandos Core
+## Core Commands
 
-Estos comandos crean configuracion base para la cuenta
+These commands create base configuration for the account
 
-### seguridad
+### security
 
-Este comando activa **Access Analyzer** que automaticamente analiza las politicas creadas de IAM basandose en los patrones de uso de los usarios y recursos y alerta en caso de que las poiticas sean muy holgadas y violen el principio de menor privilegio.
+This command enables **Access Analyzer** which automatically analyzes created IAM policies based on user and resource usage patterns and alerts if policies are too loose and violate the principle of least privilege.
 
-Este comando tambien crea cuatro grupos de usuarios de IAM les asigna permisos especificos para cada grupo y tambien crea un usuario en cada grupo. Los grupos que crea son los siguientes:
+This command also creates four groups of IAM users, assigns them specific permissions for each group, and also creates a user in each group. The groups you create are as follows:
 
-- **Administradores:** Grupo para Administradores, este grupo tiene permisos completos de administrador para aws
-- **Developers:** Grupo para Desarrolladores, este grupo tiene permisos de power user, permite crear recursos pero no modificar politicas de seguridad ni informacion de billing
-- **Auditores:** Grupo para Auditores, este grupo tiene permisos de solo lectura, pensado para auditores que requieran poder ver y revisar recursos, politicas, configuraciones, etc. Pero no permite realizar ningun cambio
-- **Finanzasz:** Grupo para Finanzas, este grupo tiene permisos para acceder solamente la informacion de facturacion y costos asi como poder crear presupuestos
+- **Administrators:** Group for Administrators, this group has full administrator permissions for aws
+- **Developers:** Group for Developers, this group has power user permissions, it allows creating resources but not modifying security policies or billing information
+- **Auditors:** Group for Auditors, this group has read-only permissions, designed for auditors who need to be able to see and review resources, policies, configurations, etc. But it does not allow to make any changes
+- **Finance:** Group for Finance, this group has permissions to access only billing and cost information as well as being able to create budgets
 
-Este comando tiene las siguientes opciones (ninguno es requerido para poder ejecutar el comando):
+This command has the following options (none are required to run the command):
 
-- `--analyzer_nombre`: Nombre personalizado para al Access Analyzer 
-- `--nombre_admin_g`: Nombre personalizado para el grupo de administradores
-- `--nombre_dev_g`: Nombre personalizado para el grupo de desarrolladores
-- `--nombre_audit_g`: Nombre personalizado para el grupo de auditores
-- `--nombre_fin_g`: Nombre personalizado para el grupo de finanzas
+- `--analyzer_name`: Custom name for the Access Analyzer 
+- `--admin_g_name`: Custom name for the admin group
+- `--dev_g_name`: Custom name for developer group
+- `--audit_g_name`: Custom name for the auditor group
+- `--fin_g_name`: Custom name for finance group
 
-**Ejemplo:**
+**Example:**
 
-Sin opciones:
+Without options:
 
-`$ nabp core seguridad`
+`$ nabp core security`
 
-Con opciones:
+Using opciones:
     
-`$ nabp core seguridad --analyzer_nombre miAnalyzer --nombre_admin_g AdminG --nombre_dev_g Devs`
+`$ nabp core security --analyzer_name miAnalyzer --admin_g_name AdminG --dev_g_name Devs`
 
-### presupuesto
+### budget
 
-Este comando crea un presupuesto en la cuenta de aws y dos alertas, una al cumplirse el 60% del presupuesto en consumo y otra al cumplirse el 90%. Estas alertas se enviaran al email definido en el comando
+This command creates a budget in the aws account and two alerts, one when 60% of the consumption budget is met and another when 90% is met. These alerts will be sent to the email defined in the command
 
-Este comando tiene las siguientes opciones:
+This command has the following options:
 
-- `--nombre`: Nombre personalizado de el presupesto 
-- `--monto` **(requerido)**: Monto maximo del presupuesto, el valor esta dado en dolares (USD)
-- `--email` **(requerido)**: Email al que se enviaran las alertas
+- `--name`: Budget custom name
+- `--amount` **(required)**: Maximum amount of the budget, the value is given in dollars (USD)
+- `--email` **(required)**: Email to which the alerts will be sent
 
-**Ejemplo:**
+**Example:**
 
-Sin nombre:
+Without name:
 
-`$ nabp core presupuesto --monto 200 --email admin@empresa.com`
+`$ nabp core budget --amount 200 --email admin@empresa.com`
 
-Con nombre:
+Using name:
 
-`$ nabp core presupuesto --nombre miPresupuesto --monto 200 --email admin@empresa.com`
+`$ nabp core budget --name mybudget --amount 200 --email admin@empresa.com`
 
-## Comandos Monitor
+## Monitor Commands
 
 ### trail
 
-Este comando crea un bucket para almacenar logs de cloudtrail y habilita cloudtrail para todas las regiones dentro de tu nueva cuenta.
+This command creates a bucket to store cloudtrail logs and enables cloudtrail for all regions within your new account.
 
-Este comando tiene las siguientes opciones:
+This command has the following options:
 
-- `--nombre`: Esta opcion permite especificar el nombre de el trail a crearse en AWS CloudTrail, el nombre default es *nabp-trail*
+- `--name`: This option allows you to specify the name of the trail to be created in AWS CloudTrail, the default name is *nabp-trail*
 
-**Ejemplo:**
+**Example:**
 
-Sin opciones:
+Without options:
 
 `$ nabp monitor trail`
 
-Nombre custom para el trail:
+Custom name for the trail:
 
-`$ nabp monitor trail --nombre mitrail `
+`$ nabp monitor trail --name mitrail `
 
 
 ### config
 
-## Comandos Network
+## Network Commands
 
-### crear
+### create
 
-Este commando crea una VPC con tres subnets publicas tres subnets privadas, IGW, un NatGateway y las tablas de enrutamiento y rutas necesarias.
+This command creates a VPC with three public subnets, three private subnets, IGW, a NatGateway, and the necessary routes and routing tables.
 
-Este comando tiene las siguientes opciones:
+This command has the following options:
 
-- `--rango`: Esta opcion permite especificar el rango CIDR de la VPC en formato *X.X.X.X/X*, su valor por defecto es 10.0.0.0/16
-- `--region`: Esta opcion permite especificar la region donde se quiere desplegar la vpc
+- `--range`: This option allows you to specify the CIDR range of the VPC in *X.X.X.X/X* format, its default value is 10.0.0.0/16
+- `--region`: This option allows you to specify the region where you want to deploy the vpc
 
-**Ejemplo:**
+**Example:**
 
-Sin opciones:
+Without options:
 
-`$ nabp network crear`
+`$ nabp network create`
 
-Con opciones:
+With options:
 
-`$ nabp network crear --rango 172.0.0.0/16`
+`$ nabp network create --range 172.0.0.0/16`
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">

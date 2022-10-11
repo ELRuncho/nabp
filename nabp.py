@@ -359,13 +359,13 @@ def network(config):
 @click.option('--range', default= '10.0.0.0/16', help= 'ipv4 range for the VPC')
 @click.option('--region', default='us-east-1', help='Region where the VPC is to be deployed')
 @pass_config
-def crear(config, rango, region):
+def crear(config, range, region):
     "Creates a VPC with a CIDR /16  and subnets with a range of /24"
     sess= config.session
     _ec2 = sess.client('ec2')
 
     vpc = _ec2.create_vpc(
-        CidrBlock=rango,
+        CidrBlock=range,
         TagSpecifications = [
             {
                 'ResourceType': 'vpc',
@@ -457,7 +457,7 @@ def crear(config, rango, region):
     click.echo('EIP Created')
 
     PublicSubnetA = _ec2.create_subnet(
-                                        CidrBlock= rango[0:5]+'10.0/24',
+                                        CidrBlock= range[0:5]+'10.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
                                         AvailabilityZone= region+'a',
                                         TagSpecifications= [
@@ -476,7 +476,7 @@ def crear(config, rango, region):
     click.echo('Created public subnet: '+ PublicSubnetA['Subnet']['SubnetId'])
     
     PublicSubnetB = _ec2.create_subnet(
-                                        CidrBlock= rango[0:5]+'20.0/24',
+                                        CidrBlock= range[0:5]+'20.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
                                         AvailabilityZone= region+'b',
                                         TagSpecifications= [
@@ -495,7 +495,7 @@ def crear(config, rango, region):
     click.echo('Created public subnet: '+ PublicSubnetB['Subnet']['SubnetId'])
 
     PublicSubnetC = _ec2.create_subnet(
-                                        CidrBlock= rango[0:5]+'30.0/24',
+                                        CidrBlock= range[0:5]+'30.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
                                         AvailabilityZone= region+'c',
                                         TagSpecifications= [
@@ -514,7 +514,7 @@ def crear(config, rango, region):
     click.echo('Created public subnet: '+ PublicSubnetC['Subnet']['SubnetId'])
 
     PrivateSubnetA = _ec2.create_subnet(
-                                        CidrBlock= rango[0:5]+'40.0/24',
+                                        CidrBlock= range[0:5]+'40.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
                                         AvailabilityZone= region+'a',
                                         TagSpecifications= [
@@ -533,7 +533,7 @@ def crear(config, rango, region):
     click.echo('Created private subnet: '+ PrivateSubnetA['Subnet']['SubnetId'])
 
     PrivateSubnetB = _ec2.create_subnet(
-                                        CidrBlock= rango[0:5]+'50.0/24',
+                                        CidrBlock= range[0:5]+'50.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
                                         AvailabilityZone= region+'b',
                                         TagSpecifications= [
@@ -552,7 +552,7 @@ def crear(config, rango, region):
     click.echo('Created private subnet: '+ PrivateSubnetB['Subnet']['SubnetId'])
 
     PrivateSubnetC = _ec2.create_subnet(
-                                        CidrBlock= rango[0:5]+'60.0/24',
+                                        CidrBlock= range[0:5]+'60.0/24',
                                         VpcId= vpc['Vpc']['VpcId'],
                                         AvailabilityZone= region+'c',
                                         TagSpecifications= [
@@ -740,7 +740,7 @@ def trail(config, name):
 
 
 @monitor.command('config')
-#@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
+#@click.option('--range', default= '10.0.0.0/16', help= 'range ipv4 para la vpc')
 @pass_config
 def configuracion(config):
     "Enables AWS Config for all resources and creates basic rules to monitor comon resources such as s3"
