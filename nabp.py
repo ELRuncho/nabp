@@ -352,15 +352,15 @@ def presupuesto(config, name,amount, email):
 @cli.group('network')
 @pass_config
 def network(config):
-    """Comandos networking"""
+    """Networking commands"""
 
 
-@network.command('crear')
-@click.option('--rango', default= '10.0.0.0/16', help= 'rango ipv4 para la vpc')
-@click.option('--region', default='us-east-1', help='Region sobre la que se desplegara la VPC')
+@network.command('create')
+@click.option('--range', default= '10.0.0.0/16', help= 'ipv4 range for the VPC')
+@click.option('--region', default='us-east-1', help='Region where the VPC is to be deployed')
 @pass_config
 def crear(config, rango, region):
-    "crea VPC con CIDR /16 y subnets con rango /24"
+    "Creates a VPC with a CIDR /16  and subnets with a range of /24"
     sess= config.session
     _ec2 = sess.client('ec2')
 
@@ -384,7 +384,7 @@ def crear(config, rango, region):
     )
 
     
-    click.echo("Creada VPC " + vpc['Vpc']['VpcId'])
+    click.echo("Created VPC: " + vpc['Vpc']['VpcId'])
 
     igw= _ec2.create_internet_gateway(
                                         TagSpecifications= [
@@ -405,7 +405,7 @@ def crear(config, rango, region):
                                     InternetGatewayId= igw['InternetGateway']['InternetGatewayId']
                                 )
 
-    click.echo('credo gateway '+ igw['InternetGateway']['InternetGatewayId'] + 'y asignado a VPC '+ vpc['Vpc']['VpcId'])
+    click.echo('Created internet gateway: '+ igw['InternetGateway']['InternetGatewayId'] + 'y asignado a VPC '+ vpc['Vpc']['VpcId'])
 
     publicroute= _ec2.create_route_table(
                                             VpcId= vpc['Vpc']['VpcId'],
@@ -437,7 +437,7 @@ def crear(config, rango, region):
                                             ]
                                         )
 
-    click.echo('Creadas tablas de enrutamiento')
+    click.echo('Routing tables created ')
 
     eip= _ec2.allocate_address(
                                 Domain='vpc',
@@ -454,7 +454,7 @@ def crear(config, rango, region):
                                             ]
                             )
 
-    click.echo('Creadas EIP')
+    click.echo('EIP Created')
 
     PublicSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'10.0/24',
@@ -473,7 +473,7 @@ def crear(config, rango, region):
                                         ]
                                     )
 
-    click.echo('creada subnet publica '+ PublicSubnetA['Subnet']['SubnetId'])
+    click.echo('Created public subnet: '+ PublicSubnetA['Subnet']['SubnetId'])
     
     PublicSubnetB = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'20.0/24',
@@ -492,7 +492,7 @@ def crear(config, rango, region):
                                         ]
                                     )
 
-    click.echo('creada subnet publica '+ PublicSubnetB['Subnet']['SubnetId'])
+    click.echo('Created public subnet: '+ PublicSubnetB['Subnet']['SubnetId'])
 
     PublicSubnetC = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'30.0/24',
@@ -511,7 +511,7 @@ def crear(config, rango, region):
                                         ]
                                     )
 
-    click.echo('creada subnet publica '+ PublicSubnetC['Subnet']['SubnetId'])
+    click.echo('Created public subnet: '+ PublicSubnetC['Subnet']['SubnetId'])
 
     PrivateSubnetA = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'40.0/24',
@@ -530,7 +530,7 @@ def crear(config, rango, region):
                                         ]
                                     )
 
-    click.echo('creada subnet privada '+ PrivateSubnetA['Subnet']['SubnetId'])
+    click.echo('Created private subnet: '+ PrivateSubnetA['Subnet']['SubnetId'])
 
     PrivateSubnetB = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'50.0/24',
@@ -549,7 +549,7 @@ def crear(config, rango, region):
                                         ]
                                     )
 
-    click.echo('creada subnet privada '+ PrivateSubnetB['Subnet']['SubnetId'])
+    click.echo('Created private subnet: '+ PrivateSubnetB['Subnet']['SubnetId'])
 
     PrivateSubnetC = _ec2.create_subnet(
                                         CidrBlock= rango[0:5]+'60.0/24',
@@ -568,7 +568,7 @@ def crear(config, rango, region):
                                         ]
                                     )
     
-    click.echo('creada subnet privada '+ PrivateSubnetC['Subnet']['SubnetId'])
+    click.echo('Created private subnet: '+ PrivateSubnetC['Subnet']['SubnetId'])
 
     natgw= _ec2.create_nat_gateway(
                                     AllocationId=eip['AllocationId'],
@@ -587,7 +587,7 @@ def crear(config, rango, region):
                                 )
 
     natwaiter = _ec2.get_waiter('nat_gateway_available')
-    click.echo('creando nat gateway')
+    click.echo('Creating NAT gateway')
     natwaiter.wait(
         NatGatewayIds= [natgw['NatGateway']['NatGatewayId'],],
         WaiterConfig= {
@@ -596,7 +596,7 @@ def crear(config, rango, region):
         }
     )
 
-    click.echo('nat creado')
+    click.echo('NAT gateway created')
     private_route= _ec2.create_route(
                                         DestinationCidrBlock='0.0.0.0/0',
                                         GatewayId= natgw['NatGateway']['NatGatewayId'],
@@ -639,19 +639,19 @@ def crear(config, rango, region):
         RouteTableId= privateroute['RouteTable']['RouteTableId'],
         SubnetId= PrivateSubnetC['Subnet']['SubnetId'],
     )
-    click.echo('rutas asociadas')
+    click.echo('Route tables asociated')
 
 
 @cli.group('monitor')
 @pass_config
 def monitor(config):
-    """Comandos monitoreo"""
+    """Monitoring commands"""
 
 @monitor.command('trail')
-@click.option('--nombre', default= 'nabptrail', help= 'nombre de el trail')
+@click.option('--name', default= 'nabptrail', help= 'name for the trail to be created')
 @pass_config
-def trail(config, nombre):
-    "Habilita cloud trail y crea un bucket para guardar los logs de acceso"
+def trail(config, name):
+    "Enables Cloud Trail and creates a bucket to store the access logs"
     sess= config.session
     id = sess.client('sts').get_caller_identity()['Account']
     trail= sess.client('cloudtrail')
@@ -681,7 +681,7 @@ def trail(config, nombre):
                         "Resource": "arn:aws:s3:::"+trailBucketName,
                         "Condition": {
                             "StringEquals": {
-                                "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/"+nombre
+                                "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/"+name
                             }
                         }
                     },
@@ -694,7 +694,7 @@ def trail(config, nombre):
                         "Condition": {
                                         "StringEquals": {
                                             "s3:x-amz-acl": "bucket-owner-full-control",
-                                            "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/"+nombre
+                                            "aws:SourceArn": "arn:aws:cloudtrail:us-east-1:"+id+":trail/"+name
                                         }
                         }
                     }
@@ -707,11 +707,11 @@ def trail(config, nombre):
         Bucket=trailBucketName,
         Policy= bucketPolicy
     )
-    click.echo('trailbucket creado')
+    click.echo('trailbucket created')
 
     # create trail for all regions
     nabptrail= trail.create_trail(
-        Name=nombre,
+        Name=name,
         S3BucketName=trailBucketName,
         S3KeyPrefix='new-account-trail',
         #SNSTopicName='',
@@ -730,10 +730,10 @@ def trail(config, nombre):
     )
 
     trail.start_logging(
-        Name= nombre
+        Name= name
     )
 
-    click.echo("creado el trail")
+    click.echo("New trail created")
 
 
     
