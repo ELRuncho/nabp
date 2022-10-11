@@ -281,25 +281,25 @@ def coresec(config, analyzer_name,admin_g_name,dev_g_name,audit_g_name,fin_g_nam
 
 
 
-@core.command('presupuesto')
-@click.option('--nombre', default='nabpBudget',help='mnombre del presupuesto a crear')
-@click.option('--monto', default=None, required=True, help='monto, en USD, del presupuesto a crear')
-@click.option('--email', default=None, required=True, help='email para enviar notificaciones relacionadas con el presupuesto')
+@core.command('budget')
+@click.option('--name', default='nabpBudget',help='name for the budget to be created')
+@click.option('--amount', default=None, required=True, help='amount, in USD, for the new budget')
+@click.option('--email', default=None, required=True, help='email to send notifications related to the budget')
 @pass_config
-def presupuesto(config, nombre,monto, email):
-    "establece presupuesto y alertas"
+def presupuesto(config, name,amount, email):
+    "Creates a budget and alerts on said budget"
     sess = config.session
     id = sess.client('sts').get_caller_identity()['Account']
     budget=sess.client("budgets")
 
-    click.echo(" creando budget y alerta asociada")
+    click.echo("Creating Budget and Alerts")
     #monto debe ser string
     budget.create_budget(   
                             AccountId=id,
                             Budget={
-                                'BudgetName': nombre,
+                                'BudgetName': name,
                                 'BudgetLimit': {
-                                    'Amount': monto,
+                                    'Amount': amount,
                                     'Unit':'USD'
                                 },
                                 'TimeUnit': 'MONTHLY',
@@ -307,11 +307,11 @@ def presupuesto(config, nombre,monto, email):
                             }
                         )
 
-    click.echo("budget creado")
+    click.echo("Budget created")
 
     budget.create_notification(
                                 AccountId=id,
-                                BudgetName= nombre,
+                                BudgetName= name,
                                 Notification= {
                                         'NotificationType': 'ACTUAL',
                                         'ComparisonOperator': 'GREATER_THAN',
@@ -329,7 +329,7 @@ def presupuesto(config, nombre,monto, email):
 
     budget.create_notification(
                                 AccountId= id,
-                                BudgetName= nombre,
+                                BudgetName= name,
                                 Notification= {
                                         'NotificationType': 'ACTUAL',
                                         'ComparisonOperator': 'EQUAL_TO',
@@ -345,8 +345,8 @@ def presupuesto(config, nombre,monto, email):
                                 ]
                             )
 
-    click.echo("notificaciones creadas")
-    click.echo("subscriptores a notificacion agregados")
+    click.echo("Alerts created")
+    click.echo("Added email as subscribers to the alerts")
 
 
 @cli.group('network')
