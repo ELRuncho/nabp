@@ -784,7 +784,7 @@ def configuracion(config):
     )
 
     # alert on public s3 buckets
-     #s3-bucket-public-read-prohibited
+    #s3-bucket-public-read-prohibited
     awsconfig.put_config_rule(
         ConfigRule={
             'ConfigRuleName': 'S3PublicRead',
